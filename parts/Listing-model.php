@@ -1,6 +1,6 @@
 <?php
 /**
-  * An API for the Listings.php class 
+  * An API for the Listings.php class | works best with javascript
   *
   * The endpoint for our angular frontend implemented using the wp-admin api
   *
@@ -97,7 +97,7 @@ class ListingLibrary {
 	
 	public function buildJSON($listingdata){
 		// var_dump($listingdata);die;
-		
+
 		// $listingdata = array(
 		//     'id'          => $unsafedata->data->ID,
 		//     'user_login'  => $unsafedata->data->user_login,

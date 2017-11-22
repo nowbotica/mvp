@@ -18,10 +18,48 @@ node_modules
 # Development folder
 includes
 
+
+
 ##############################################################################################
 ## Optional                                                                                 ##
 ## might be useful to keep in repository as npm is a minefield and massive barrier to entry ##
 ##############################################################################################
 
 # Bower files installed by .bowerrc
-# application/dependencies
+
+application/dependencies/*
+
+# js
+!application/dependencies/angular
+application/dependencies/angular/*
+!application/dependencies/angular/angular.js
+
+!application/dependencies/angular-animate
+application/dependencies/angular-animate/*
+!application/dependencies/angular-animate/angular-animate.js
+
+!application/dependencies/angular-ui-router
+application/dependencies/angular-ui-router/*
+!application/dependencies/angular-ui-router/release
+application/dependencies/angular-ui-router/release/*
+!application/dependencies/angular-ui-router/release/angular-ui-router.js
+
+!application/dependencies/underscore
+application/dependencies/underscore/*
+!application/dependencies/underscore/underscore.js
+
+# css
+
+!application/dependencies/components-font-awesome
+application/dependencies/components-font-awesome/*
+!application/dependencies/components-font-awesome/css
+application/dependencies/components-font-awesome/css/*
+!application/dependencies/components-font-awesome/css/font-awesome.css
+
+
+!application/dependencies/uikit
+application/dependencies/uikit/
+!application/dependencies/uikit/css
+application/dependencies/uikit/css/*
+!application/dependencies/uikit/css/uikit.css
+
