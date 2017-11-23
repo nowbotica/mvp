@@ -13,6 +13,7 @@ define( 'MVPMSYSTEM_URL', plugin_dir_url( __FILE__ ) );
 
 # Includes the Listing module
 include( MVPMSYSTEM . '/parts/Listing.php');
+include( MVPMSYSTEM . '/parts/Listing-model.php');
 
 /**
  * Ensures template file is available in dashboard
@@ -26,13 +27,9 @@ include( MVPMSYSTEM . '/parts/Listing.php');
   */
 function mvpmApp(  ) {
   ?>
-    
-    <div ng-app="MvpmApp">
-      
+
       <ui-view autoscroll="false" ng-if='!isRouteLoading'></ui-view>
-    
-    </div>
-   
+
   <?php
 }
 add_shortcode('mvpmApp', 'mvpmApp');
@@ -67,8 +64,8 @@ if ( ! function_exists( 'mvmpApp_css' ) ) {
         // font-awesome.min.css: icon library
         wp_enqueue_style( 'font-awesome', MVPMSYSTEM_URL . '/application/dependencies/components-font-awesome/css/font-awesome.css', false, '4.7.0', 'all');
 
-        // foundation.css:  Mobile First Grid
-        wp_enqueue_style( 'uikit', MVPMSYSTEM_URL . '/application/dependencies/uikit/css/uikit.css', false, '2.27.4', 'all');
+        // bootstrap.css:  Mobile First Grid
+        // wp_enqueue_style( 'bootswatch', MVPMSYSTEM_URL . '/application/dependencies/bootswatch/united/bootstrap.css', false, '3.3.7', 'all');
 
         // MVP Mechanic Application dependencies
         wp_enqueue_style( 'mvmpApp_system', MVPMSYSTEM_URL . '/application/mvpm-system.css', false, '1.0.0', 'all');
@@ -122,11 +119,6 @@ if ( ! function_exists( 'mvmpApp_scripts' ) ) {
             'image_path'      => MVPMSYSTEM_URL .  '/application/build/images/'
         ), '', true);
 
-        // MVP Mechanic Listing Module
-        // wp_enqueue_script( 'mvpm-listing-module', MVPMSYSTEM_URL . '/application/system/Listing.js', array(
-        //     'mvpm-system'
-        // ), '', true);
-        
         // MVP Mechanic Base Application
         wp_enqueue_script('mvpm-controllers', MVPMSYSTEM_URL . 'application/system/controllers.js', array(
            'mvpm-system'
@@ -139,6 +131,12 @@ if ( ! function_exists( 'mvmpApp_scripts' ) ) {
         ), '', true);
         wp_enqueue_script('mvpm-services', MVPMSYSTEM_URL . 'application/system/services.js', array(
            'mvpm-system'
+        ), '', true);
+
+
+        // MVP Mechanic Listing Module
+        wp_enqueue_script( 'mvpm-listing-module', MVPMSYSTEM_URL . '/application/system/Listing.js', array(
+            'mvpm-system'
         ), '', true);
     }
 }

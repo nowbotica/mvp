@@ -1,6 +1,32 @@
-<div class="mvp-mechanic {{system.menuState}}" ng-controller="SystemCtrl as system">
-    <!-- <system-header></system-header> -->
-    <!-- <system-menu></system-menu> -->
-    <system-loader></system-loader>
-	<h1>system online</h1>
+<div class="mvp-mechanic {{system.menuState}}">
+
+
+  <!-- <system-header></system-header> -->
+  <!-- <system-menu></system-menu> -->
+  <!--<system-loader></system-loader>-->
+
+
+  <main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <!-- <h1 class="display-3">Hello, world!</h1> -->
+        <p>Search for space.</p>
+        <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <ui-view></ui-view>
+        
+    </div> <!-- /container -->
+
+  </main>
+
+  <footer class="container">
+    <p>&copy; Company 2017</p>
+  </footer>
+
 </div>

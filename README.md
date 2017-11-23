@@ -116,3 +116,7 @@ Notice: Undefined index: row_painters in C:\project\kab\wordpress\wp-content\plu
 //     // setItem , default: true, event "LocalStorageModule.notification.setitem"
 //     // removeItem , default: false, event "LocalStorageModule.notification.removeitem"
 // });
+
+autentication somethint
+
+write explaination of sql used in listing query

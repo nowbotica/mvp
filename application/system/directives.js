@@ -1,4 +1,4 @@
-console.log('shared directives go here');
+// console.log('shared directives go here');
 MvpmApp.directive('systemLoader', function() {
     return {
         restrict: 'AE',

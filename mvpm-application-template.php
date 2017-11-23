@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: TzuSystem Template
+Template Name: MvpmApp Wrapper
 */
 /**
  * Whitelabeled Visitor Facing Single Page Javascript Application Template
@@ -15,10 +15,10 @@ Template Name: TzuSystem Template
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<?php wp_head(); ?>
 	</head>
-	<body class="whitelabel">
+	<body class="whitelabel" ng-app="MvpmApp">
 
-	<?php do_shortcode('[mvpmApp][/mvpmApp]');?>
+	    <?php do_shortcode('[mvpmApp][/mvpmApp]');?>
 
-	<?php wp_footer(); ?>
+	    <?php wp_footer(); ?>
 	</body>
 </html>

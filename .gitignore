@@ -56,7 +56,6 @@ application/dependencies/components-font-awesome/*
 application/dependencies/components-font-awesome/css/*
 !application/dependencies/components-font-awesome/css/font-awesome.css
 
-
 !application/dependencies/uikit
 application/dependencies/uikit/
 !application/dependencies/uikit/css

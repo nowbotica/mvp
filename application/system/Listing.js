@@ -1,24 +1,44 @@
-MvpmSystem.factory("ListingFactory", ['$http', '$q', '$stateParams', function($http, $q, $stateParams) {
+MvpmApp.controller('ListingCtrl', ListingCtrl)
+MvpmApp.factory('ListingService', ListingService);
 
-	var factory = {};
+// inject InboxService and bind the 
+// response to `this.messages`
+function ListingCtrl(listings) {
+    console.log('listings', listings)
+    this.listings = listings;
+    this.foo = 'bar'
+}
+// https://toddmotto.com/resolve-promises-in-angular-routes/
+ListingCtrl.resolve = {
+  listings: function (ListingService) {
+    return ListingService.getListings();
+  }
+}
 
-	factory.getListing = function(form_type){
-		var deferred = $q.defer();
-		$http({
+function ListingService($http, $q) {
+  function getListings() {
+
+        var deferred = $q.defer();
+        $http({
             method: 'GET',
-            url: mvpmFormPath+'/'+form_type+'.json',
-			headers : {
-				'Content-Type' : 'application/json'
-			}
+            url: window.mvpmSystemApiUrl,
+            params: {
+              action:   "mvpm_get_listing",
+              security: window.mvpmSystemSecurity
+            },
+            headers : {
+                'Content-Type' : 'application/json' 
+            },
             }).success(function(data, status) {
-            	console.log('returned', typeof data);
-            	deferred.resolve(data);
+                deferred.resolve(data);
 
             }).error(function(data, status) {
-            	console.log('returned', data);
-            	deferred.reject();
+                deferred.reject();
         });
+        
         return deferred.promise;
-	}
-  	return factory;
-}]);
+  }
+  return {
+    getListings: getListings
+  };
+}

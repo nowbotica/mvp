@@ -29,13 +29,24 @@ MvpmApp.config(['$stateProvider', '$urlRouterProvider',
 
         var system = {
             name: 'system',  //mandatory
-            controller: 'SystemCtrl',
-            url: '/',
+            abstract: true,
             templateUrl: template_path+ '/system.html',
+            controller: 'SystemCtrl as system',
         };
+        // first resolve a named service to cache listings from server
+        var systemListing = {
+            name: 'system.listing',  //mandatory
+            url: '/',
+            parent: 'system',
+            templateUrl: mvpmPartialsPath+'/listing/view.html',
+            controller: 'ListingCtrl as listing',
+            resolve: ListingCtrl.resolve,
+        };
+        // second resolve a factory service wich maniplates listings
 
         $stateProvider
             .state(system)
+            .state(systemListing)
 
         $urlRouterProvider.otherwise('/');
     }
