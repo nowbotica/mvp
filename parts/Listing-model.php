@@ -144,10 +144,14 @@ class ListingLibrary {
   private static function buildSafeData($listing){
 
     $listing = array(
-        'post_id' => $listing->ID,
+        'post_id'  => $listing->ID,
         'full_url' => $listing->guid,
-        'meta' => $listing->meta,
-        'author_id' => $listing->post_author,
+        'meta'     => $listing->meta,
+        'location' => $listing->meta['row_location'],
+        'duration' => $listing->meta['row_duration'],
+        'rating'   => $listing->meta['row_rating'],
+        'cost'     => $listing->meta['row_cost'],
+        'author_id'   => $listing->post_author,
         'description' => $listing->post_content,
         'short_description' => $listing->post_excerpt,
         'last_updated' => $listing->post_modified_gmt,

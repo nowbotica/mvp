@@ -13,8 +13,6 @@
 		                  		<h5 class="card-title">Location: {{listing.meta.row_location}}</h5>
 		                  		<h6 class="card-subtitle text-muted">Price per drink: {{listing.meta.row_cost}}</h6>
 		                  		<h6 class="card-subtitle text-muted">Average Stay: {{listing.meta.row_duration}}</h6>
-								<h4>Rating: {{listing.meta.row_rating}}</h4>
-		                  		<p class="card-text">{{listing.description}}</p>
 		                	</div>
 		                </div>
             			<div class="col-lg-4">
@@ -22,7 +20,9 @@
                 		</div>
             			<div class="col-lg-4">
                 			<div class="card-body">
-								<table class="table table-striped">
+								<h4>Rating: {{listing.rating}}</h4>
+		                  		<p class="card-text">{{listing.description}}</p>
+								<!-- <table class="table table-striped">
 								    <thead>
 								    	<tr><th colspan=2>About the venue</th></tr>
 								    </thead>
@@ -32,7 +32,7 @@
 								      	<tr><td>Interior Design:</td><td>{{listing.meta.row_designers}}</td></tr>
 								      	<tr><td>Featured Artists:</td><td>{{listing.meta.row_painters}}</td></tr>
 								    </tbody>
-								</table>
+								</table> -->
 
 		                  		<a href="listing/{{listing.slug}}" target="_blank" class="card-link">Book Venue</a><br />
 		                  		<!--  TODO send cookie with current search params, remove target bal -->
