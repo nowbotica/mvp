@@ -2,7 +2,7 @@ window.mvpmSystemApiUrl   = mvpm_api_object.ajax_url;
 window.mvpmUrlDomainPath  = mvpm_api_object.url_domain_path;
 window.mvpmPartialsPath   = mvpm_api_object.partials_path;
 window.mvpmImagePath      = mvpm_api_object.image_path;
-// window.mvpmImagePath      = '/wp-content/plugins/mvp-mechanic/application/build/images/';
+// window.mvpmImagePath   = '/wp-content/plugins/mvp-mechanic/application/build/images/';
 window.mvpmFormPath       = mvpm_api_object.form_path;
 window.mvpmSystemSecurity = mvpm_api_object.ajax_nonce;
 

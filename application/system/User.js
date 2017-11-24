@@ -1,39 +1,24 @@
 /*
 * http://natko.com/wordpress-ajax-login-without-a-plugin-the-right-way/
-* Directive: directive('userContextMenu', UserDirective);
-* Show the login dialog box on click
-* $('a#show_login').on('click', function(e){
-*     $('body').prepend('<div class="login_overlay"></div>');
-*     $('form#login').fadeIn(500);
-*     $('div.login_overlay, form#login a.close').on('click', function(){
-*         $('div.login_overlay').remove();
-*         $('form#login').hide();
-*     });
-*     e.preventDefault();
-* });
-* directive must contain
-
-* $('a#show_login').on('click', function(e){
-*     console.log()
-* });
-*/
-
 /*
 * Renders a dialog box at the top of the page
 * <user-context-menu></user-context-menu>
- */
- MvpmApp.controller("testCtrl", function($scope, UserService) {
-    $scope.color1 = "color";
+*/
+MvpmApp.controller("testUserCtrl", function($scope, UserService) {
     $scope.formData = {};
-    $scope.formLogin = function() {        
-        UserService.loginUser('admin', '11').then(function(data) {
-            // if (data.result == 'loggedin'){
-            if (true){
-                scope.parent.system.login = true;
-                scope.datamessage = 'login succes'; 
+    // console.log($scope.$parent);
+    $scope.$parent
+    $scope.formLogin = function() { 
+        console.log($scope.formData)
+        $scope.dataMessage = window.mvpmUserLoginloadingmessage;       
+        UserService.loginUser($scope.formData.username, $scope.formData.password).then(function(data) {
+            console.log('new',data)
+            if (data.Loggedin){
+                $scope.$parent.system.loggedin = true;
+                $scope.dataMessage = 'login succes'; 
                 console.log(data);
             } else {
-                scope.datamessage = 'failed to login'; 
+                $scope.dataMessage = 'failed to login'; 
             }
         });
     }
@@ -47,45 +32,14 @@ MvpmApp.directive('userContextMenu', ['UserService', function(UserService) {
             'password': '&',
             'form': '&'
         },
-        controller: 'testCtrl',
-        controllerAs: 'test',
+        controller: 'testUserCtrl',
         templateUrl: mvpmPartialsPath+'/user/user-login.html',
-        // link: function(scope, element, UserService) {
-            /* 
-             * Binds login form to our backend processing 
-            * Binds the user login view with the backend user verification code
-             */
-            // scope.foo = 'blah';
-            // // $('form#login').on('click', function(e){            
-            // scope.formLogin = function(){
-         
-            //     console.log('du', 'look da, no angular');
-
-            //     scope.datamessage = window.mvpmUserLoginloadingmessage;
-            //     // Perform AJAX login on form submit
-            //   
-            // }
-        // }
     }
 }]);
 
 /*
 * User Service
 * this could become a system wide resolve object - we need to make the login work first
-*
-* inject InboxService and bind the
-* response to `this.messages`
-* function ListingCtrl(listings) {
-*     console.log('listings', listings)
-*     this.listings = listings;
-*     this.foo = 'bar'
-* }
-* // https://toddmotto.com/resolve-promises-in-angular-routes/
-* ListingCtrl.resolve = {
-*     listings: function (ListingService) {
-*         return ListingService.getListings();
-*     }
-* }
 * MvpmApp.controller('ListingCtrl', UserCtrl);
 * MvpmApp.factory('ListingService', UserService);
 */
@@ -95,18 +49,25 @@ MvpmApp.service('UserService', UserService);
 function UserService($http, $q) {
     function loginUser(username, password) {
         var that = this;
+
         var deferred = $q.defer();
+        console.log(username, password)
+        that.username = username;
+        that.password = password;
+
         $http({
             method: 'POST',
             url: window.mvpmSystemApiUrl,
             params: {
                 action:   "mvpm_user_login",
                 security: window.mvpmSystemSecurity,
-                username: that.username,
-                password: that.password
+                username: 'username',
+                password: 'password',
+                remember: true
             },
             headers : {
-                'Content-Type' : 'application/json'
+                'Content-Type' : 'application/json',
+                'Data-Type': 'json'
             }
         }).success(function(data, status) {
             console.log('testable data', data);
@@ -124,6 +85,7 @@ function UserService($http, $q) {
         loginUser: loginUser
     };
 }
+// http://code.realcrowd.com/on-the-bleeding-edge-advanced-angularjs-form-validation/
 
 
 
