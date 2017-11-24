@@ -19,22 +19,23 @@ function ListingService($http, $q) {
   function getListings() {
 
         var deferred = $q.defer();
-        // $http({
-        //     method: 'GET',
-        //     url: window.mvpmSystemApiUrl,
-        //     params: {
-        //       action:   "mvpm_get_listing",
-        //       security: window.mvpmSystemSecurity
-        //     },
-        //     headers : {
-        //         'Content-Type' : 'application/json' 
-        //     },
-        //     }).success(function(data, status) {
-        //         deferred.resolve(data);
+        $http({
+            method: 'GET',
+            url: window.mvpmSystemApiUrl,
+            params: {
+              action:   "mvpm_get_listing",
+              security: window.mvpmSystemSecurity
+            },
+            headers : {
+                'Content-Type' : 'application/json'
+            },
+            }).success(function(data, status) {
+                console.log('testable data', data)
+                deferred.resolve(data);
 
-        //     }).error(function(data, status) {
-        //         deferred.reject();
-        // });
+            }).error(function(data, status) {
+                deferred.reject();
+        });
         var j = {
     "data": [
         {
