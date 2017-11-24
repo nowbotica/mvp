@@ -24,8 +24,18 @@
  */
  MvpmApp.controller("testCtrl", function($scope, UserService) {
     $scope.color1 = "color";
-    $scope.formLogin = function(msg) {        
-        alert(msg);
+    $scope.formData = {};
+    $scope.formLogin = function() {        
+        UserService.loginUser('admin', '11').then(function(data) {
+            // if (data.result == 'loggedin'){
+            if (true){
+                scope.parent.system.login = true;
+                scope.datamessage = 'login succes'; 
+                console.log(data);
+            } else {
+                scope.datamessage = 'failed to login'; 
+            }
+        });
     }
 });
 MvpmApp.directive('userContextMenu', ['UserService', function(UserService) {
@@ -35,16 +45,17 @@ MvpmApp.directive('userContextMenu', ['UserService', function(UserService) {
         scope: {
             'username': '&',
             'password': '&',
-            // 'formLogin': '&'
+            'form': '&'
         },
-        controllerAs: 'testCtrl as test',
+        controller: 'testCtrl',
+        controllerAs: 'test',
         templateUrl: mvpmPartialsPath+'/user/user-login.html',
-        link: function(scope, element, UserService) {
+        // link: function(scope, element, UserService) {
             /* 
              * Binds login form to our backend processing 
             * Binds the user login view with the backend user verification code
              */
-            scope.foo = 'blah';
+            // scope.foo = 'blah';
             // // $('form#login').on('click', function(e){            
             // scope.formLogin = function(){
          
@@ -52,16 +63,9 @@ MvpmApp.directive('userContextMenu', ['UserService', function(UserService) {
 
             //     scope.datamessage = window.mvpmUserLoginloadingmessage;
             //     // Perform AJAX login on form submit
-            //     // UserService.loginUser('admin', '11').then(function(data) {
-            //     //     // if (data.result == 'loggedin'){
-            //     //         // scope.parent.system.login = true;
-            //     //         scope.datamessage = 'login succes'; 
-            //     //         console.log(data);
-            //     //     // else
-            //     //         // scope.datamessage = window.mvpmUserLoginloadingmessage; 
-            //     // });
+            //   
             // }
-        }
+        // }
     }
 }]);
 

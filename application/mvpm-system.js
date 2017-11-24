@@ -80,3 +80,28 @@ MvpmApp.run(['$rootScope', function($rootScope) {
 
     })
 }]);
+
+
+   /**
+ * form focusable directive
+ */
+// MvpmApp.directive('focusableForm', ['$animate', '$timeout', function ($animate, $timeout) {
+//         return {
+//             restrict: 'A',
+//             link: function (scope, element, attr) {
+//                 var FOCUSED_CLASS = 'focused',
+//                         elements = element.find('input');
+//                 angular.forEach(elements, function (value, key) {
+//                     angular.element(value).on('focus', function () {
+//                         $timeout(function () {
+//                             $animate.setClass(element, FOCUSED_CLASS, '');
+//                         }, 0);
+//                     }).on('blur', function () {
+//                         $timeout(function () {
+//                             $animate.setClass(element, '', FOCUSED_CLASS);
+//                         }, 0);
+//                     });
+//                 });
+//             }
+//         };
+//     }]);
