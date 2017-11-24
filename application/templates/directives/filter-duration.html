@@ -1,0 +1,9 @@
+<div class="choose-this">
+  <select [(ngModel)]="chosen.id">
+    <option ng-repeat="duration in durations" value={{duration.value}}>
+      {{duration.name}}
+    </option>
+  </select>
+
+  <i class="fa fa-chevron-down" aria-hidden="true"></i>
+</div>

@@ -1,0 +1,6 @@
+<div class="smoke-here">
+  <button type="button" ng-click="smokeHere($index + 1)" ng-repeat="life in lives">
+    <i ng-if="($index + 1) <= howSmokey" class="fa fa-heart" aria-hidden="true"></i>
+    <i ng-if="($index + 1) > howSmokey" class="fa fa-heart-o" aria-hidden="true"></i>
+  </button>
+</div>

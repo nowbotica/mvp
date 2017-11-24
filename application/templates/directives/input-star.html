@@ -1,0 +1,7 @@
+<div class="star-this">
+  <button type="button" ng-click="starThis()" [@shine]="starRed">
+    <i ng-if="starRed" class="fa fa-star" aria-hidden="true"></i>
+    <i ng-if="!starRed" class="fa fa-star-o" aria-hidden="true"></i>
+    <input type="checkbox" ng-model="starRed" />
+  </button>
+</div>

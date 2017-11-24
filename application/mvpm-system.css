@@ -8806,3 +8806,267 @@ a.text-dark:focus, a.text-dark:hover {
 .card {
   margin-bottom:40px;
 }
+
+.filters-sidebar h3 {
+      padding: 0;
+    margin-top: 13px;
+    float: left;
+}
+/*//////////////// Rating directive*/
+.smoke-here {
+  background: transparent;
+  /*border: 1px solid white;*/
+  //padding: 5px;
+  border-radius: 5px;
+  height: 40px;
+  overflow: hidden;
+  float: left;
+}
+.smoke-here button[type=button]{
+  width:40px;
+  border:none;
+  background:transparent;
+  height:40px;
+  padding:5px;
+}
+
+.smoke-here .fa {
+  font-size:23px;
+  color:#E95420;
+}
+.smoke-here .fa {
+  postition:relative;
+  left:0;
+  top:0;
+}
+
+/*///////////////// Select directive*/
+.choose-this {
+  background: transparent;
+  border: 1px solid #E95420;
+  border-radius: 5px;
+  height: 40px;
+  overflow: hidden;
+  float: left;
+  width:100%;
+  margin-bottom:20px;
+}
+.choose-this select{
+  background: transparent;
+  padding: 5px;
+  line-height: 1;
+  height: 40px;
+  -webkit-appearance: none;
+  font-size: 23px;
+  background: transparent;
+  border: none;
+  color: black;
+  padding: 0px 10px 5px;
+  option {
+    background:black;
+  }
+}
+
+.choose-this .fa {
+  font-size:23px;
+  color:#E95420;
+  postition:relative;
+  right:0;
+  top:0;
+  float: right;
+  padding: 5px 10px;
+  border-left: 1px solid #E95420;
+} 
+
+
+/*/////////////////////////// Slide directive*/
+
+.range-slide {
+  background: transparent;
+  border: 1px solid #E95420;
+  border-radius: 5px;
+  height: 40px;
+  overflow: hidden;
+  float: left;
+  padding: 0 10px 0 5px;
+  width:100%;
+}
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+  border:none !important;
+}
+
+
+// thumbs
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #E95420;
+  height: 30px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -5px;
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #E95420;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+  /*box-shadow: 1px 1px 1px #E95420;*/
+  border: 1px solid #E95420;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+// tracks
+input[type=range] {
+  margin-top:10px;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 90%;
+  height: 20px;
+  cursor: pointer;
+  //box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 1.3px;
+  border: 0.2px solid rgba(0, 0, 0, 0.2);
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #367ebd;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+
+/*//////////////////////////// Directive star*/
+.star-this {
+  background:transparent;
+  border:1px solid #E95420;
+  border-radius:5px;
+  //width:40px;
+  height:40px;
+  float: left;
+  overflow:hidden;
+}
+.star-this button[type=button]{
+  background:none;
+  border:none;
+  padding:5px;
+  border-radius:5px;
+  width:40px;
+  height:40px;
+  overflow:hidden;
+  
+}
+.star-this .fa {
+  font-size:23px;
+  color:gold;
+ }
+//.star-this .fa:first-of-type {
+
+.star-this .fa {
+  postition:relative;
+  left:0;
+  top:0;
+}
+
+.star-this input[type=checkbox] {
+  display:block;
+  width:0;
+  height:0;
+}
+
+/*//////////////////////////////////// Directive Login*/
+form#login{
+    display: none;
+    background-color: #FFFFFF;
+    position: fixed;
+    top: 200px;
+    padding: 40px 25px 25px 25px;
+    width: 350px;
+    z-index: 999;
+    left: 50%;
+    margin-left: -200px;
+}
+
+form#login p.status{
+    display: none;
+}
+
+.login_overlay{
+    height: 100%;
+    width: 100%;
+    background-color: #F6F6F6;
+    opacity: 0.9;
+    position: fixed;
+    z-index: 998;
+}
