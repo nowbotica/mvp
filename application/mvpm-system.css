@@ -9047,7 +9047,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 /*//////////////////////////////////// Directive Login*/
 form#login{
-    display: none;
+    /*display: none;*/
     background-color: #FFFFFF;
     position: fixed;
     top: 200px;

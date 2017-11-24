@@ -2,7 +2,11 @@
 /*
  * TODO: a basic login set up to fall back on if no oauth solution available
  */
+
 //define('MVPM_EDITION', 'community');
+
+
+
 
 // Enable the user with no privileges to run ajax_login() in AJAX
 //
