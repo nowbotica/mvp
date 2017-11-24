@@ -11,9 +11,13 @@ Author URI: http://nowbotica.com/
 define( 'MVPMSYSTEM', plugin_dir_path( __FILE__ ) );
 define( 'MVPMSYSTEM_URL', plugin_dir_url( __FILE__ ) );
 
+# Includes the user mangement module
+include( MVPMSYSTEM . '/parts/User.php');
+
 # Includes the Listing module
 include( MVPMSYSTEM . '/parts/Listing.php');
 include( MVPMSYSTEM . '/parts/Listing-model.php');
+
 
 /**
  * Ensures template file is available in dashboard
@@ -133,6 +137,17 @@ if ( ! function_exists( 'mvmpApp_scripts' ) ) {
            'mvpm-system'
         ), '', true);
 
+        // MVP Mechanic User Module
+        wp_enqueue_script( 'mvpm-user-module', MVPMSYSTEM_URL . '/application/system/User.js', array(
+            'mvpm-system'
+        ), '', true);
+
+        wp_localize_script( 'mvpm-system', 'mvpm_user_object', array(
+            'mvpm_redirecturl' => home_url(),
+            'mvpm_passwordreseturl' => 'resetp',
+            'mvpm_registerurl' => 'register',
+            'mvpm_loginloadingmessage' => __('Sending user info, please wait...')
+        ));
 
         // MVP Mechanic Listing Module
         wp_enqueue_script( 'mvpm-listing-module', MVPMSYSTEM_URL . '/application/system/Listing.js', array(

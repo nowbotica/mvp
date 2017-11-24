@@ -1,5 +1,14 @@
 * MVP Mechanic
 
+** Setup
+
+```
+$ mkdir -p /c/project/start.here/wordpress/
+$ cd !$
+$ wget wordpress
+$ 
+$ echo  'alias go="cd /c/project/start.here/wordpress/wp-content/plugins/mvp-mechanic"' >> ~/.bashrc
+```
 
 ** Todo
 - Create an seo friendly api or something

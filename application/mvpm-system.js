@@ -6,6 +6,13 @@ window.mvpmImagePath      = mvpm_api_object.image_path;
 window.mvpmFormPath       = mvpm_api_object.form_path;
 window.mvpmSystemSecurity = mvpm_api_object.ajax_nonce;
 
+/* User module*/
+window.mvpmUserRedirecturl = mvpm_user_object.mvpm_redirecturl;
+window.mvpmUserPasswordreseturl = mvpm_user_object.mvpm_passwordreseturl;
+window.mvpmUserRegisterurl = mvpm_user_object.mvpm_registerurl;
+window.mvpmUserLoginloadingmessage = mvpm_user_object.mvpm_loginloadingmessage;
+
+
 var toType = function(obj) {
 
     return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
