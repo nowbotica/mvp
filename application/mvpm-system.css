@@ -9031,7 +9031,6 @@ input[type=range]:focus::-ms-fill-upper {
   font-size:23px;
   color:gold;
  }
-//.star-this .fa:first-of-type {
 
 .star-this .fa {
   postition:relative;
@@ -9069,4 +9068,14 @@ form#login p.status{
     opacity: 0.9;
     position: fixed;
     z-index: 998;
+}
+
+/*////////////////////// header*/
+.navbar-brand.brand-oneofthoseadsites {
+    font-size: 0;
+    height: 35px;
+    background: url(build/images/logos/oneofthose.png);
+    width: 137px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }

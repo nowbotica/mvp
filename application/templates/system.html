@@ -1,7 +1,7 @@
 <div class="mvp-mechanic {{system.loggedin}}">
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">Fixed navbar</a>
+      <a class="navbar-brand brand-oneofthoseadsites" href="#">Find Space</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -17,17 +17,16 @@
         <form class="form-inline mt-2 mt-md-0">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item" ng-if="system.loggedin == 'loggedout'">
-              <a class="nav-link" href="logout" ng-click="userLogout" ng-controller="UserActionsCtrl">Login</a>
+              <a class="nav-link" href="" ng-click="showLogin()" ng-controller="UserActionsCtrl">Login</a>
             </li>
-            
             <li class="nav-item" ng-if="system.loggedin == 'loggedout'">
-              <a class="nav-link" href="register" ng-click="showRegister" ng-controller="UserActionsCtrl">Register</a>              
+              <a class="nav-link" href="" ng-click="showRegister()" ng-controller="UserActionsCtrl">Register</a>              
             </li>
             <li class="nav-item" ng-if="system.loggedin == 'loggedin'">
-              <a class="nav-link" href="profile">Profile</a>
+              <a class="nav-link" href="">Profile</a>
             </li>
             <li class="nav-item" ng-if="system.loggedin == 'loggedin'">
-              <a class="nav-link" href="login" ng-click="showLogin" ng-controller="UserActionsCtrl">Logout</a>
+              <a class="nav-link" href="" ng-click="userLogout()" ng-controller="UserActionsCtrl">Logout</a>
             </li>
           </ul>
         </form>

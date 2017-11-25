@@ -1,5 +1,3 @@
-// console.log('shared controllers go here');
-
 var SystemCtrl = angular.module('SystemCtrl', []);
 SystemCtrl.controller('SystemCtrl', ['$scope', '$stateParams', 'loggedin',
 	// "ActionFactory",
@@ -14,6 +12,8 @@ SystemCtrl.controller('SystemCtrl', ['$scope', '$stateParams', 'loggedin',
 	this.image_path = window.mvpmImagePath;
 		
 	this.loggedin = loggedin;	
+
+	// this.contextview = 'default'; 
 		// console.log('boom',loggedin)
 	// this.menuState = 'closed';
 
@@ -29,21 +29,12 @@ SystemCtrl.controller('SystemCtrl', ['$scope', '$stateParams', 'loggedin',
 	// }
 }]);
 
-// MvpmApp.controller('LoggedinCtrl', LoggedinCtrl)
-// MvpmApp.factory('LoggedinService', LoggedinService);
-
-// inject InboxService and bind the 
-// response to `this.messages`
-// function LoggedinCtrl(loggedin) {
-//     console.log('loggedin', loggedIn)
-//     this.loggedin = loggedin;
-//     this.foo = 'bar'
-// }
 SystemCtrl.resolve = {
   loggedin: function (LoggedinService) {
     return LoggedinService.loggedIn();
   }
 }
+
 MvpmApp.service('LoggedinService', LoggedinService);
 function LoggedinService($http, $q) {
     function loggedIn() {

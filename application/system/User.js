@@ -35,6 +35,29 @@ MvpmApp.directive('userLogin', ['UserService', function(UserService) {
         templateUrl: mvpmPartialsPath+'/user/user-login.html',
     }
 }]);
+MvpmApp.controller("UserActionsCtrl", function($scope, UserService, LoggedinService) {
+    $scope.showLogin = function(){
+        console.log('show login', $scope.$parent.system.loggedin)
+    };
+    $scope.showRegister = function(){
+        console.log('register')
+
+    };
+    $scope.userLogout = function(){
+        UserService.logoutUser().then(function(data) {
+            // console.log('new',data)
+            // if (data.loggedin){
+            //     $scope.dataMessage = 'failed to logout'; 
+            // } else {
+                console.log('logout',data)
+                // $scope.dataMessage = 'logout succes'; 
+                $scope.$parent.system.loggedin = 'loggedout';
+            // }
+        });  
+    }
+
+});
+
 
 /*
 * User Service
@@ -96,7 +119,7 @@ function UserService($http, $q) {
             deferred.resolve(data);
 
         }).error(function(data, status) {
-            // console.log('error data', data);
+            console.log('error data', data);
             deferred.reject();
         });
 

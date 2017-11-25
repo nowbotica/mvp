@@ -45,11 +45,11 @@ add_action( 'wp_ajax_mvpm_user_login', 'mvpm_user_login' );
 add_action( 'wp_ajax_nopriv_mvpm_user_login', 'mvpm_user_login' );
 
 function mvpm_user_logout(){
-    check_ajax_referer( 'mvpm', 'security' );
+    check_ajax_referer( 'mvpm_system', 'security' );
     wp_clear_auth_cookie();
     wp_logout();
     ob_clean(); // probably overkill for this, but good habit
-    echo 'loggedout';
+    echo json_encode(array('loggedin'=>false, 'message'=>__('Logout successful, redirecting...')));
     wp_die();
 }
 add_action( 'wp_ajax_mvpm_user_logout', 'mvpm_user_logout' );
