@@ -1,6 +1,41 @@
-<div class="mvp-mechanic {{system.menuState}}">
+<div class="mvp-mechanic {{system.loggedin}}">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container">
+      <a class="navbar-brand brand-oneofthoseadsites" href="#">Find Space</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item" ng-if="system.loggedin == 'loggedout'">
+              <!-- <a class="nav-link" href="" ng-click="showLogin()" ng-controller="UserActionsCtrl">Login</a> -->
+              <login-modal-launcher></login-modal-launcher>
+            </li>
+            <li class="nav-item" ng-if="system.loggedin == 'loggedout'">
+              <a class="nav-link" href="" ng-click="showRegister()" ng-controller="UserActionsCtrl">Register</a>              
+            </li>
+            <li class="nav-item" ng-if="system.loggedin == 'loggedin'">
+              <a class="nav-link" href="">Profile</a>
+            </li>
+            <li class="nav-item" ng-if="system.loggedin == 'loggedin'">
+              <a class="nav-link" href="" ng-click="userLogout()" ng-controller="UserActionsCtrl">Logout</a>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </div>
+  </nav>
 
-
+  
   <!-- <system-header></system-header> -->
   <!-- <system-menu></system-menu> -->
   <!--<system-loader></system-loader>-->
