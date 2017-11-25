@@ -1,4 +1,4 @@
-  <main role="main">
+  <section>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
@@ -13,68 +13,16 @@
     </div>
 
 
-<div class="container">
-<section class="row">
-	<div class="col-md-4 col-lg-3">
-		<aside class="filters-sidebar">
-			<h3>Location</h3>
-			<filter-location></filter-location>
-			<h3>Intended length of stay</h3>
-			<filter-duration></filter-duration>
-			<h3>Spend on drink</h3>
-			<filter-cost></filter-cost>
-		</aside>
-    </div>
-    <div class="col-md-8 col-lg-9">
-        <div class="row">
-            <div class="col-md-6 col-lg-12" ng-repeat="listing in listing.listings">
-            	<article class="card">
-                	<h3 class="card-header">{{listing.name}}
-						<span style="float:right"><input-rating rated="listing.rating"></input-rating></span>
-                	</h3>
-            		<div class="row">
-            			<div class="col-lg-4">
-		                	<div class="card-body">
-		                  		<h5 class="card-title">Location: {{listing.location}}</h5>
-		                  		<h6 class="card-subtitle text-muted">Price per drink: £{{listing.cost}}.00</h6>
-		                  		<h6 class="card-subtitle text-muted">Average Stay: {{listing.duration}} mins</h6>
-		                  		<br>
-		                  		<a href="https://whitespaceisdesign.com" style="color:#E95420;text-decoration: underline;" class="card-link">Venue Website</a>
-		                	</div>
-		                </div>
-            			<div class="col-lg-4">
-                			<img style="width: 100%; display: block;" ng-src="{{system.image_path}}/upgrade.jpg" alt="Card image">
-                		</div>
-            			<div class="col-lg-4">
-                			<div class="card-body">
-		                  		<!-- <p class="card-text">{{listing.description}}</p> -->
-								<table class="table table-striped">
-								    <thead>
-								    	<tr><th colspan=2>About the venue</th></tr>
-								    </thead>
-								    <tbody>
-								      	<tr><td>Year Completed</td><td>{{listing.meta.row_yearCompleted}}</td></tr>
-								    	<tr><td>Architects:</td><td>{{listing.meta.row_builders}}</td></tr>
-								      	<tr><td>Interior Design:</td><td>{{listing.meta.row_designers}}</td></tr>
-								      	<tr><td>Featured Artists:</td><td>{{listing.meta.row_painters}}</td></tr>
-								    </tbody>
-								</table>
-								<div class="row">
-									<div class="col-md-6"><a href="listing/{{listing.slug}}" target="_blank" class="btn btn-primary btn-md">Bookings</a></div>
-									<div class="col-md-6"><input-star></input-star></div>
-								</div>
-                			</div>
-                		</div>
-                	</div>
-                	<div class="card-footer text-muted">
-                  		Last updated: {{listing.last_updated}} 
-                	</div>
-                </div>
-            	</article>
+    <div class="container">
+        <section class="row">
+        	<div class="col-md-4 col-lg-3">
+        		<aside class="filters-sidebar" ui-view="filters"></aside>
             </div>
-        </div>
+            <div class="col-md-8 col-lg-9">
+                <main ui-view="list"></main>
+                
+        </section>
+    </div>
+
+
 </section>
-</div>
-
-
-  </main>
