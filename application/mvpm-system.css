@@ -8899,7 +8899,7 @@ input[type=range] {
 }
 
 
-// thumbs
+/*// thumbs*/
 
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -9045,29 +9045,16 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 /*//////////////////////////////////// Directive Login*/
-form#login{
-    /*display: none;*/
-    background-color: #FFFFFF;
-    position: fixed;
-    top: 200px;
-    padding: 40px 25px 25px 25px;
-    width: 350px;
-    z-index: 999;
-    left: 50%;
-    margin-left: -200px;
-}
 
-form#login p.status{
-    display: none;
+.mvpm-form p {
+  margin-bottom:5px;
 }
+.mvpm-form p label {
+   font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: normal;
+  text-align:left;
+  display: block !important;
 
-.login_overlay{
-    height: 100%;
-    width: 100%;
-    background-color: #F6F6F6;
-    opacity: 0.9;
-    position: fixed;
-    z-index: 998;
 }
 
 /*////////////////////// header*/
@@ -9079,3 +9066,67 @@ form#login p.status{
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+/* //////////////////////////// login modal */
+
+
+.tzu-build .tzu-modal-background {
+  /* modal container fixed across whole screen */
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* z-index must be higher than .modal-background */
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.75);
+  /* enables scrolling for tall modals */
+  overflow: auto;
+  padding: 20px;
+  display: none; }
+  .tzu-build .tzu-modal-background .tzu-modal {
+    padding: 20px;
+    border: 3px solid #772953;
+    position: relative;
+    background: url('build/images/theme/debut_light.png');
+    width: 100%;
+    max-width: 400px;
+    min-height: 400px;
+    margin: 60px auto 0;
+    opacity: .4;
+    -ms-transform: scale(0.5, 0.5);
+    /* IE 9 */
+    -webkit-transform: scale(0.5, 0.5);
+    /* Safari */
+    transform: scale(0.2, 0.5);
+    -webkit-transition: all 0.8s ease;
+    transition: all 0.8s ease; }
+    .tzu-build .tzu-modal-background .tzu-modal.loading {
+      opacity: 1;
+      -ms-transform: scale(1, 1);
+      -webkit-transform: scale(1, 1);
+      transform: scale(1, 1); }
+  .tzu-build .tzu-modal-background.loading {
+    display: block; }
+  .tzu-build .tzu-modal-background .tzu-modal-header {
+    border-bottom: 1px solid black;
+    width: 100%;
+    float: left;
+    height: 100px; }
+  .tzu-build .tzu-modal-background .tzu-modal-footer {
+    background: #772953;
+    float: left;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 30px; }
+    .tzu-build .tzu-modal-background .tzu-modal-footer .button {
+      width: 80%;
+      margin-top: -10px;
+      margin: -10px 10% 0; }
+  .tzu-build .tzu-modal-background .tzu-modal-content {
+    float: left;
+    width: 100%; }

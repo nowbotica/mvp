@@ -17,7 +17,8 @@
         <form class="form-inline mt-2 mt-md-0">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item" ng-if="system.loggedin == 'loggedout'">
-              <a class="nav-link" href="" ng-click="showLogin()" ng-controller="UserActionsCtrl">Login</a>
+              <!-- <a class="nav-link" href="" ng-click="showLogin()" ng-controller="UserActionsCtrl">Login</a> -->
+              <login-modal-launcher></login-modal-launcher>
             </li>
             <li class="nav-item" ng-if="system.loggedin == 'loggedout'">
               <a class="nav-link" href="" ng-click="showRegister()" ng-controller="UserActionsCtrl">Register</a>              
@@ -34,7 +35,7 @@
     </div>
   </nav>
 
-  <!-- <user-login></user-login> -->
+  
   <!-- <system-header></system-header> -->
   <!-- <system-menu></system-menu> -->
   <!--<system-loader></system-loader>-->

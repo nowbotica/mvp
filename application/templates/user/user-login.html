@@ -1,18 +1,14 @@
 
-<form id="login">
-    <h1>Site Login</h1>
+<form id="login" class="mvpm-form" >
+    <!-- <h1>Site Login</h1> -->
     <p class="status">{{dataMessage}}</p>
-    <label for="username">Username</label>
-    <input id="username" type="text" name="username" ng-model="formData.username">
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password" ng-model="formData.password">
-    <input class="submit_button" type="submit"  ng-click="formLogin()" name="submit">
+    <p><label for="username">Username</label></p>
+    <p><input id="username" type="text" name="username" ng-model="</formData.username"></p>
+    <p><label for="password">Password</label></p>
+    <p><input id="password" type="password" name="password" ng-model="formData.password"></p>
+    <input class="submit_button" class="btn btn-primary btn-md" type="submit"  ng-click="formLogin()" name="submit">
     <hr>
     <a class="lost" href="{{window.mvpmUserPasswordreseturl}}">Lost your password?</a>
 
     <a class="lost" href="{{window.mvpmUserPasswordreseturl}}">Sign up</a>
-    <a class="close" href="">(close)</a>
-
-<!--   <pre>list={{formData.username}}</pre>
-  <pre>list={{formData.password}}</pre> -->
 </form>

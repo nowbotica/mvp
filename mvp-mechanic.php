@@ -75,7 +75,7 @@ if ( ! function_exists( 'mvmpApp_css' ) ) {
         wp_enqueue_style( 'mvmpApp_system', MVPMSYSTEM_URL . '/application/mvpm-system.css', false, '1.0.0', 'all');
 
         // MVP Mechanic Application files
-        wp_enqueue_style( 'mvmpApp_build',  MVPMSYSTEM_URL . '/application/build/build.css', false, '1.0.0', 'all');
+        // wp_enqueue_style( 'mvmpApp_build',  MVPMSYSTEM_URL . '/application/build/build.css', false, '1.0.0', 'all');
 
     }
 

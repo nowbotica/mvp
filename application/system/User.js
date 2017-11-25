@@ -22,6 +22,7 @@ MvpmApp.controller("testUserCtrl", function($scope, UserService, LoggedinService
         });
     }
 });
+
 MvpmApp.directive('userLogin', ['UserService', function(UserService) {
     return {
         restrict: 'AE',
@@ -35,6 +36,7 @@ MvpmApp.directive('userLogin', ['UserService', function(UserService) {
         templateUrl: mvpmPartialsPath+'/user/user-login.html',
     }
 }]);
+
 MvpmApp.controller("UserActionsCtrl", function($scope, UserService, LoggedinService) {
     $scope.showLogin = function(){
         console.log('show login', $scope.$parent.system.loggedin)
@@ -45,19 +47,67 @@ MvpmApp.controller("UserActionsCtrl", function($scope, UserService, LoggedinServ
     };
     $scope.userLogout = function(){
         UserService.logoutUser().then(function(data) {
-            // console.log('new',data)
-            // if (data.loggedin){
-            //     $scope.dataMessage = 'failed to logout'; 
-            // } else {
-                console.log('logout',data)
-                // $scope.dataMessage = 'logout succes'; 
-                $scope.$parent.system.loggedin = 'loggedout';
-            // }
+            $scope.$parent.system.loggedin = 'loggedout';
         });  
     }
-
 });
 
+MvpmApp.directive('loginModalLauncher', ['$parse', 'UserService', function($parse, UserService){
+    return {
+        replace: true,
+       templateUrl: mvpmPartialsPath+'/user/user-login-modal.html',
+        scope: {
+          reportid: '@',
+          pdf: '@'
+        },
+        link: function(scope, element, attr) {
+        //https://gist.github.com/CMCDragonkai/6282750
+           
+            // scope.urlDomainPath = window.TzuUrlDomainPath;
+
+            // attr.$observe('pdf', function(value){
+            //     if(value){
+            //         console.log('p', value);
+            //         scope.pdf = value
+            //     }
+            // });
+            //  attr.$observe('reportid', function(value){
+            //     if(value){
+            //         console.log('c',value)
+            //         scope.reportid = value
+            //     }
+            // });
+            // scope.createPDF = function(g){
+            //     console.log(g)
+
+            //     ActionFactory.createPdf(g).then(function(resp){
+            //     //     // console.log('resdss', resp);
+            //     //     // scope.report_id = resp;//'/wp-content/uploads/pdfs/2017-04-03 16:53:10_92_cp-17.pdf';
+            //         scope.pdf = resp; //return value' //scope.report_id;
+            //     //     // scope.report_id 
+            //     });   
+            // }
+            scope.openModal = function(g){
+                scope.actionStatus = 'loading';
+                // ActionFactory.createPdf(g).then(function(resp){
+                    // scope.pdf = resp; //return value' //scope.report_id;
+                    window.setTimeout(function(){
+                        scope.modalStatus  = 'loading';
+                        scope.$apply();
+                    }, 10)
+                // }); 
+            }
+
+            scope.closeModal = function(){
+                scope.modalStatus  = '';
+                window.setTimeout(function(){
+                    scope.actionStatus = '';
+                    scope.$apply();
+                }, 100)
+            }
+        }
+    };
+}]);
 
 /*
 * User Service
