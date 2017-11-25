@@ -22,7 +22,7 @@ MvpmApp.controller("testUserCtrl", function($scope, UserService, LoggedinService
         });
     }
 });
-MvpmApp.directive('userContextMenu', ['UserService', function(UserService) {
+MvpmApp.directive('userLogin', ['UserService', function(UserService) {
     return {
         restrict: 'AE',
         replace: true,
