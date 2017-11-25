@@ -9130,3 +9130,36 @@ input[type=range]:focus::-ms-fill-upper {
   .tzu-build .tzu-modal-background .tzu-modal-content {
     float: left;
     width: 100%; }
+
+
+/*////////////////////////////////////// gumball*/
+
+.backward .scrolled.ng-enter {
+        transform: translate3d(-100%, 0, 0);
+    }
+.backward .scrolled.ng-enter-active {
+        transform: translate3d(0, 0, 0);
+    }
+.backward .scrolled.ng-leave {
+        transform: translate3d(0, 0, 0);
+    }
+.backward .scrolled.ng-leave-active {
+        transform: translate3d(100%, 0, 0);
+    }
+  
+.scrolled {
+  transition: transform $duration ease;
+  transform: translate3d(0, 0, 0);
+}
+.scrolled.ng-enter {
+    transform: translate3d(100%, 0, 0);  // Move to the right (up to 100% of width)
+  }
+.scrolled.ng-enter-active {
+    transform: translate3d(0, 0, 0);
+  }
+.scrolled.ng-leave {
+    transform: translate3d(0, 0, 0);
+  }
+.scrolled.ng-leave-active {
+    transform: translate3d(-100%, 0, 0);  
+  }

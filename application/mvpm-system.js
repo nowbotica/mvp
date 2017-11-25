@@ -48,13 +48,21 @@ MvpmApp.config(['$stateProvider', '$urlRouterProvider',
             parent: 'system',
             templateUrl: mvpmPartialsPath+'/listing/view.html',
             controller: 'ListingCtrl as listing',
-            resolve: ListingCtrl.resolve,
+            resolve: ListingCtrl.resolve
         };
         // second resolve a factory service wich maniplates listings
-
+        var systemAbout = {
+            name: 'system.about',  //mandatory
+            url: '/about',
+            parent: 'system',
+            templateUrl: mvpmPartialsPath+'/about.html',
+            // controller: 'ListingCtrl as listing',
+            // resolve: ListingCtrl.resolve
+        };
         $stateProvider
             .state(system)
             .state(systemListing)
+            .state(systemAbout)
 
         $urlRouterProvider.otherwise('/');
     }
