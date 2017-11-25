@@ -5,21 +5,21 @@
 
 //define('MVPM_EDITION', 'community');
 
-
-
-
 // Enable the user with no privileges to run ajax_login() in AJAX
-// add_action("wp_ajax_nopriv_mvpm_user_check", '"mvpmUserCheck');
-// function mvpmUserCheck(){
-// 	if ( is_user_logged_in() ){
-// 		// $user = wp_get_current_user();
-// 		// return $user->exists();
-// 		echo 'loggedin';
-// 		wp_die;
-// 	} else {
-// 		echo 'loggedout';
-// 	}
-// }
+add_action("wp_ajax_nopriv_mvpm_user_check", 'mvpm_user_check');
+add_action("wp_ajax_mvpm_user_check", 'mvpm_user_check');
+function mvpm_user_check(){
+	check_ajax_referer( 'mvpm_system', 'security' );
+	if ( is_user_logged_in() ){
+		// $user = wp_get_current_user();
+		// return $user->exists();
+		echo 'loggedin';
+		wp_die;
+	} else {
+		echo 'loggedout';
+	}
+	wp_die();
+}
 
 
 /*
@@ -27,22 +27,30 @@
  */
 function mvpm_user_login(){
 	check_ajax_referer( 'mvpm_system', 'security' );
-echo 'op';
-//    $info = array();
-//    $info['user_login'] = 'admin';//$_REQUEST['username'];
-//    $info['user_password'] = 'password';//$_REQUEST['password'];
-//    $info['remember'] = true;
-// // var_dump($info);
-//    $user_signon = wp_signon( $info, false );
+   $info = array();
+   $info['user_login'] = $_REQUEST['username'];
+   $info['user_password'] = $_REQUEST['password'];
+   $info['remember'] = true;
+   $user_signon = wp_signon( $info, false );
 
-//    if ( is_wp_error($user_signon) ){
-//    		// echo $_REQUEST['username'];
-//        echo json_encode(array('loggedin'=>false, 'message'=>__('Wrong username or password.')));
-//    } else {
-//        echo json_encode(array('loggedin'=>true, 'message'=>__('Login successful, redirecting...')));
-//    }
+   if ( is_wp_error($user_signon) ){
+       echo json_encode(array('loggedin'=>false, 'message'=>__('Wrong username or password.')));
+   } else {
+       echo json_encode(array('loggedin'=>true, 'message'=>__('Login successful, redirecting...')));
+   }
 
    wp_die();
 }
-
+add_action( 'wp_ajax_mvpm_user_login', 'mvpm_user_login' );
 add_action( 'wp_ajax_nopriv_mvpm_user_login', 'mvpm_user_login' );
+
+function mvpm_user_logout(){
+    check_ajax_referer( 'mvpm', 'security' );
+    wp_clear_auth_cookie();
+    wp_logout();
+    ob_clean(); // probably overkill for this, but good habit
+    echo 'loggedout';
+    wp_die();
+}
+add_action( 'wp_ajax_mvpm_user_logout', 'mvpm_user_logout' );
+add_action( 'wp_ajax_nopriv_mvpm_user_logout', 'mvpm_user_logout' );

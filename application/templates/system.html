@@ -1,5 +1,10 @@
-<div class="mvp-mechanic {{system.menuState}}">
-
+<div class="mvp-mechanic {{system.loggedin}}">
+  <div ng-if="system.loggedin == 'loggedin'">
+    <a href="login" ng-controller="UserActionsCtrl">Logout</a>
+  </div>
+  <div ng-if="system.loggedin == 'loggedout'">
+    <a href="login">Login</a>
+  </div>
 
   <!-- <system-header></system-header> -->
   <!-- <system-menu></system-menu> -->

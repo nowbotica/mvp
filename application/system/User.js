@@ -4,16 +4,15 @@
 * Renders a dialog box at the top of the page
 * <user-context-menu></user-context-menu>
 */
-MvpmApp.controller("testUserCtrl", function($scope, UserService) {
+MvpmApp.controller("testUserCtrl", function($scope, UserService, LoggedinService) {
     $scope.formData = {};
     // console.log($scope.$parent);
     $scope.$parent
     $scope.formLogin = function() { 
-        console.log($scope.formData)
         $scope.dataMessage = window.mvpmUserLoginloadingmessage;       
         UserService.loginUser($scope.formData.username, $scope.formData.password).then(function(data) {
             console.log('new',data)
-            if (data.Loggedin){
+            if (data.loggedin){
                 $scope.$parent.system.loggedin = true;
                 $scope.dataMessage = 'login succes'; 
                 console.log(data);
@@ -45,7 +44,6 @@ MvpmApp.directive('userContextMenu', ['UserService', function(UserService) {
 */
 
 MvpmApp.service('UserService', UserService);
-
 function UserService($http, $q) {
     function loginUser(username, password) {
         var that = this;
@@ -61,28 +59,54 @@ function UserService($http, $q) {
             params: {
                 action:   "mvpm_user_login",
                 security: window.mvpmSystemSecurity,
-                username: 'username',
-                password: 'password',
+                username: that.username,
+                password: that.password,
                 remember: true
             },
             headers : {
-                'Content-Type' : 'application/json',
-                'Data-Type': 'json'
+                'Content-Type' : 'application/json'
             }
         }).success(function(data, status) {
             console.log('testable data', data);
             deferred.resolve(data);
 
         }).error(function(data, status) {
-            console.log('error data', data);
+            // console.log('error data', data);
             deferred.reject();
         });
 
         return deferred.promise;
     }
+    function logoutUser(){
+
+        var deferred = $q.defer();
+
+        $http({
+            method: 'POST',
+            url: window.mvpmSystemApiUrl,
+            params: {
+                action:   "mvpm_user_logout",
+                security: window.mvpmSystemSecurity,
+            },
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        }).success(function(data, status) {
+            console.log('testable data', data);
+            deferred.resolve(data);
+
+        }).error(function(data, status) {
+            // console.log('error data', data);
+            deferred.reject();
+        });
+
+        return deferred.promise;
+
+    }
     // would a factory return loginUser()?
     return {
-        loginUser: loginUser
+        loginUser: loginUser,
+        logoutUser: logoutUser
     };
 }
 // http://code.realcrowd.com/on-the-bleeding-edge-advanced-angularjs-form-validation/

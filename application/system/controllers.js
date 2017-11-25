@@ -1,9 +1,9 @@
 // console.log('shared controllers go here');
 
 var SystemCtrl = angular.module('SystemCtrl', []);
-SystemCtrl.controller('SystemCtrl', ['$scope', '$stateParams', 
+SystemCtrl.controller('SystemCtrl', ['$scope', '$stateParams', 'loggedin',
 	// "ActionFactory",
-	function($scope, $stateParams
+	function($scope, $stateParams, loggedin
 		// , ActionFactory
 	){
 
@@ -13,6 +13,8 @@ SystemCtrl.controller('SystemCtrl', ['$scope', '$stateParams',
 	// allows application wide access to {{system.image_path}}
 	this.image_path = window.mvpmImagePath;
 		
+	this.loggedin = loggedin;	
+		// console.log('boom',loggedin)
 	// this.menuState = 'closed';
 
 	// this.triggerMenu = function(state){
@@ -26,3 +28,51 @@ SystemCtrl.controller('SystemCtrl', ['$scope', '$stateParams',
 	// 	}
 	// }
 }]);
+
+// MvpmApp.controller('LoggedinCtrl', LoggedinCtrl)
+// MvpmApp.factory('LoggedinService', LoggedinService);
+
+// inject InboxService and bind the 
+// response to `this.messages`
+// function LoggedinCtrl(loggedin) {
+//     console.log('loggedin', loggedIn)
+//     this.loggedin = loggedin;
+//     this.foo = 'bar'
+// }
+SystemCtrl.resolve = {
+  loggedin: function (LoggedinService) {
+    return LoggedinService.loggedIn();
+  }
+}
+MvpmApp.service('LoggedinService', LoggedinService);
+function LoggedinService($http, $q) {
+    function loggedIn() {
+        
+        var deferred = $q.defer();
+
+        $http({
+            method: 'GET',
+            url: window.mvpmSystemApiUrl,
+            params: {
+                action:   "mvpm_user_check",
+                security: window.mvpmSystemSecurity
+            },
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        }).success(function(data, status) {
+            console.log('testable data', data);
+            deferred.resolve(data);
+
+        }).error(function(data, status) {
+            // console.log('error data', data);
+            deferred.reject();
+        });
+
+        return deferred.promise;
+    }
+    // would a factory return loginUser()?
+    return {
+        loggedIn: loggedIn
+    };
+}

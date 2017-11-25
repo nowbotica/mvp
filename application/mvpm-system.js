@@ -39,6 +39,7 @@ MvpmApp.config(['$stateProvider', '$urlRouterProvider',
             abstract: true,
             templateUrl: template_path+ '/system.html',
             controller: 'SystemCtrl as system',
+            resolve: SystemCtrl.resolve
         };
         // first resolve a named service to cache listings from server
         var systemListing = {
@@ -80,6 +81,7 @@ MvpmApp.run(['$rootScope', function($rootScope) {
 
     })
 }]);
+
 
 
    /**
