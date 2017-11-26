@@ -1,28 +1,41 @@
 
-var ClientCtrl = angular.module('ClientCtrl', []);
-ClientCtrl.controller('ClientCtrl', ['$scope', '$stateParams', 'ClientFactory', 
-  function($scope, $stateParams, ClientFactory
+
+var ProfileCtrl = angular.module('ProfileCtrl', []);
+ProfileCtrl.controller('ProfileCtrl', ['$scope', '$stateParams', 'ProfileFactory', 
+  function($scope, $stateParams, ProfileFactory
   ){
+  // Use $sce.trustAsHtml() in the controller to convert the html string.
+  $scope.loading = true;  
 
-//    function validateCompanyName(s) {
-//     if (/^(\w+\s?)*\s*$/.test(s)) {
-//         return s.replace(/\s+$/, '');
-//     }
-//     return 'NOT ALLOWED';
-// }
+  $scope.edit = false;
 
-  $scope.createClient = function(data){
-    console.log('creating')
-    var company_name = data.companyName;
-    var client_email = data.clientEmail;
+  ProfileFactory.getProfile().then(function(profile_details){
+    var data = profile_details;
+    console.log('dgd', data);
+    $scope.data = data;
+
+    $scope.name = data['nicename']//   = data.user_nicename;
     
-    ClientFactory.createClient(company_name, client_email).then(function(client_id){
-      var client_id = client_id;
+    $scope.loading = false; 
+    // $scope.visible = true;
+    
+    // $scope.profile = JSON.parse(profile_details['userdata']);    
+  });
+
+  $scope.update = function(){
+    $u = JSON.stringify($scope.data)
+    console.log('sending', $u);
+
+    ProfileFactory.updateProfile($u).then(function(resp){
+      console.log('resp', resp);
+      $scope.edit = false;
+      // $scope.profile = JSON.parse(profile_details['userdata']);    
     });
   }
-}]); 
+}]);
 
-SystemApp.factory('ProfileFactory', ['$http', '$q', '$stateParams', function($http, $q, $stateParams){
+
+MvpmApp.factory('ProfileFactory', ['$http', '$q', '$stateParams', function($http, $q, $stateParams){
     var factory = {};
 
     factory.getProfile = function(){

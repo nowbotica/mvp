@@ -67,3 +67,27 @@ function LoggedinService($http, $q) {
         loggedIn: loggedIn
     };
 }
+
+
+var ClientCtrl = angular.module('ClientCtrl', []);
+ClientCtrl.controller('ClientCtrl', ['$scope', '$stateParams', 'ClientFactory', 
+  function($scope, $stateParams, ClientFactory
+  ){
+
+//    function validateCompanyName(s) {
+//     if (/^(\w+\s?)*\s*$/.test(s)) {
+//         return s.replace(/\s+$/, '');
+//     }
+//     return 'NOT ALLOWED';
+// }
+
+  $scope.createClient = function(data){
+    console.log('creating')
+    var company_name = data.companyName;
+    var client_email = data.clientEmail;
+    
+    ClientFactory.createClient(company_name, client_email).then(function(client_id){
+      var client_id = client_id;
+    });
+  }
+}]); 

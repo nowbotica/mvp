@@ -1,4 +1,6 @@
-console.log('shared directives go here');
+
+// Console.log('shared directives go here');
+
 MvpmApp.directive('systemLoader', function() {
     return {
         restrict: 'AE',
@@ -8,13 +10,13 @@ MvpmApp.directive('systemLoader', function() {
     };
 });
 
-MvpmApp.directive('imageLock', ['Upload', function(Upload){
+MvpmApp.directive('imageLock', ['ActionFactory', function(ActionFactory){
     return {
         // restrict: 'AE',
         // controller: 'LockImageCtrl',
         replace: true,
         // template: '<h1>application/system/loader/loader.html</h1>'
-        templateUrl: TzuPartialsPath+'/templates/directives/image-lock.html',
+        templateUrl: mvpmPartialsPath+'/directives/image-lock.html',
         scope: {
       message: '='
     },
@@ -26,31 +28,33 @@ MvpmApp.directive('imageLock', ['Upload', function(Upload){
       scope.message = window.mvpmImagePath+'default.png';
       
       scope.lockImage = function(file, ref){
-        scope.img_url = window.mvpmImagePath+'39.gif';
+          scope.img_url = window.mvpmImagePath+'loading-gears.gif';
           console.log(file)
           var ref = ref;
           var file = file;
-
-          Upload.upload({
-                url: window.mvpmSystemApiUrl,
-                params: {
-                action:   "tzu_upload_file",
-                security: window.mvpmSystemSecurity
-          },
-              file: file,
-                data: {file: file, 'username': 'scope.username'}
-            }).then(function (resp) {
-
+          ActionFactory.UploadFile({file: file, 'username': 'scope.username'}).then(function(){
                 scope.message = resp.data.file_url
-
                 // CoreReactorChannel.elevatedCoreTemperature(data);
+
+          })
+          
+          //       url: window.mvpmSystemApiUrl,
+          //       params: {
+          //       action:   "mvpm_upload_file",
+          //       security: window.mvpmSystemSecurity
+          // },
+          //     file: file,
+          //       data: {file: file, 'username': 'scope.username'}
+          //   }).then(function (resp) {
+
+
                 
-            }, function (resp) {
-                console.log('Error status: ' + resp.status);
-            }, function (evt) {
-                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-            });
+          //   }, function (resp) {
+          //       console.log('Error status: ' + resp.status);
+          //   }, function (evt) {
+          //       var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+          //       console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+          //   });
         }
       },
     };
@@ -153,7 +157,6 @@ MvpmApp.directive('inputStar', function() {
         }
     };
 });
-
 
 
 //     trigger('smoke', [

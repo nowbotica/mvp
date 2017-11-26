@@ -26,6 +26,7 @@ var MvpmApp = angular.module('MvpmApp',
         ,'ngAnimate'
         ,'SystemCtrl'
         // ,'ListingCtrl'
+        ,'ProfileCtrl'
     ]);
 
 // http://stackoverflow.com/questions/31266566/angular-ui-sref-not-working-with-touch-events
@@ -67,15 +68,40 @@ MvpmApp.config(['$stateProvider', '$urlRouterProvider',
             name: 'system.about',  //mandatory
             url: '/about',
             parent: 'system',
-            templateUrl: mvpmPartialsPath+'/about.html',
+            templateUrl: mvpmPartialsPath+'/about.html'
             // controller: 'ListingCtrl as listing',
             // resolve: ListingCtrl.resolve
         };
+
+        var systemProfile = { 
+            name: 'system.profile',  //mandatory
+            url: '/profile',
+            parent: 'system',
+            templateUrl: mvpmPartialsPath+ '/profile/manage-profile.html'
+        };
+
+        // var systemProfilePublic = {
+        //     name: 'system.profile.public',
+        //     url: '^/public/:owner',
+        //     params: {
+        //         owner: {
+        //             value: null,
+        //             squash: true
+        //         },
+        //     },
+        //     controller: 'PublicProfileCtrl',
+        //     templateUrl: function($stateParams) { // Can not inject dependencies
+        //                 // console.log('sdf', $stateParams.type)
+        //                 // return template_path + 'templates/reports/' + $stateParams.type+'.html';
+        //     },
+        // };
+    
         $stateProvider
             .state(system)
             .state(systemListing)
             .state(systemListingAll)
             .state(systemAbout)
+            .state(systemProfile)
 
         $urlRouterProvider.otherwise('/');
     }
