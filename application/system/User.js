@@ -9,12 +9,16 @@ MvpmApp.controller("testUserCtrl", function($scope, UserService, LoggedinService
     // console.log($scope.$parent);
     $scope.$parent
     $scope.formLogin = function() { 
-        $scope.dataMessage = window.mvpmUserLoginloadingmessage;       
+        $scope.dataMessage = window.mvpmUserLoginloadingmessage; 
+        setTimeout(function(){
+            $scope.dataMessage = window.mvpmUserLoginloadingmessage; 
+
+        },100)      
         UserService.loginUser($scope.formData.username, $scope.formData.password).then(function(data) {
             console.log('new',data)
-            if (data.loggedin){
-                $scope.$parent.system.loggedin = true;
-                $scope.dataMessage = 'login succes'; 
+            if (data.loggedin ){
+                console.log('parent scope', $scope.$parent) //.system.loggedin = true;
+                $scope.dataMessage = 'login succes, close modal below'; 
                 console.log(data);
             } else {
                 $scope.dataMessage = 'failed to login'; 
@@ -100,6 +104,7 @@ MvpmApp.directive('loginModalLauncher', ['$parse', 'UserService', function($pars
 
             scope.closeModal = function(){
                 scope.modalStatus  = '';
+                consoloe
                 window.setTimeout(function(){
                     scope.actionStatus = '';
                     scope.$apply();
