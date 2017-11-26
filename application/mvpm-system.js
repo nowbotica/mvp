@@ -58,6 +58,9 @@ MvpmApp.config(['$stateProvider', '$urlRouterProvider',
             parent: 'system.listing',
         
             views:{
+                'context-display' : {
+                    templateUrl: mvpmPartialsPath+'/listing/context-display.html',
+                },
                 'filters' : {
                     templateUrl: mvpmPartialsPath+'/listing/filters.html',
                 },
