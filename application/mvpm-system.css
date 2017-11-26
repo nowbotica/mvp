@@ -8843,7 +8843,7 @@ a.text-dark:focus, a.text-dark:hover {
 /*///////////////// Select directive*/
 .choose-this {
   background: transparent;
-  border: 1px solid #E95420;
+  border: 1px solid #4a9aa6;
   border-radius: 5px;
   height: 40px;
   overflow: hidden;
@@ -8875,7 +8875,7 @@ a.text-dark:focus, a.text-dark:hover {
   top:0;
   float: right;
   padding: 5px 10px;
-  border-left: 1px solid #E95420;
+  border-left: 1px solid #4a9aa6;
 } 
 
 
@@ -8883,7 +8883,7 @@ a.text-dark:focus, a.text-dark:hover {
 
 .range-slide {
   background: transparent;
-  border: 1px solid #E95420;
+  border: 1px solid #4a9aa6;
   border-radius: 5px;
   height: 40px;
   overflow: hidden;

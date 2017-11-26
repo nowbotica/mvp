@@ -60,6 +60,9 @@ MvpmApp.config(['$stateProvider', '$urlRouterProvider',
             views:{
                 'filters' : {
                     templateUrl: mvpmPartialsPath+'/listing/filters.html',
+                },
+                'list' : {
+                    templateUrl: mvpmPartialsPath+'/listing/list.html',
                 } 
             }
         }
