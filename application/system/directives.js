@@ -8,6 +8,54 @@ MvpmApp.directive('systemLoader', function() {
     };
 });
 
+MvpmApp.directive('imageLock', ['Upload', function(Upload){
+    return {
+        // restrict: 'AE',
+        // controller: 'LockImageCtrl',
+        replace: true,
+        // template: '<h1>application/system/loader/loader.html</h1>'
+        templateUrl: TzuPartialsPath+'/templates/directives/image-lock.html',
+        scope: {
+      message: '='
+    },
+    link: function(scope) {
+      
+      scope.updateVal = function(updatedVal) {
+        scope.message = updatedVal;
+      }
+      scope.message = window.mvpmImagePath+'default.png';
+      
+      scope.lockImage = function(file, ref){
+        scope.img_url = window.mvpmImagePath+'39.gif';
+          console.log(file)
+          var ref = ref;
+          var file = file;
+
+          Upload.upload({
+                url: window.mvpmSystemApiUrl,
+                params: {
+                action:   "tzu_upload_file",
+                security: window.mvpmSystemSecurity
+          },
+              file: file,
+                data: {file: file, 'username': 'scope.username'}
+            }).then(function (resp) {
+
+                scope.message = resp.data.file_url
+
+                // CoreReactorChannel.elevatedCoreTemperature(data);
+                
+            }, function (resp) {
+                console.log('Error status: ' + resp.status);
+            }, function (evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            });
+        }
+      },
+    };
+}]);
+
 MvpmApp.directive('inputRating', function() {
     return {
         templateUrl: mvpmPartialsPath+'/directives/input-rating.html',

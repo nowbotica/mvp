@@ -9061,7 +9061,7 @@ input[type=range]:focus::-ms-fill-upper {
 .navbar-brand.brand-oneofthoseadsites {
     font-size: 0;
     height: 35px;
-    background: url(build/images/logos/oneofthose.png);
+    background: url(build/images/logos/unopinionated-commerce-logo.png);
     width: 137px;
     background-size: contain;
     background-repeat: no-repeat;
@@ -9086,7 +9086,7 @@ input[type=range]:focus::-ms-fill-upper {
   display: none; }
   .tzu-build .tzu-modal-background .tzu-modal {
     padding: 20px;
-    border: 3px solid #772953;
+    border: 2px solid #4a9aa6;
     position: relative;
     background: url('build/images/theme/debut_light.png');
     width: 100%;
@@ -9162,4 +9162,8 @@ input[type=range]:focus::-ms-fill-upper {
   }
 .scrolled.ng-leave-active {
     transform: translate3d(-100%, 0, 0);  
+  }
+
+  .bg-dark {
+    background-color:#4a9aa6 !important;
   }

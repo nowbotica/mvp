@@ -1,0 +1,54 @@
+<section class="mvpm-ui-view">
+	<header class="view-header">
+		<!-- <h1 class="view-title">Engineer Profile</h1> -->
+		<h1 class="view-title">Client Profile</h1>
+	</header>
+	<main class="content-box">
+		<section ng-controller="ProfileCtrl" ng-hide="loading">
+			<main ng-hide="edit">
+				<div class="magikform"><h3><span>Username:</span> {{name}}</h3></div>
+				<!-- <weather details="{{profile.location}}"></weather> -->
+				<div class="magikform"><h3><span>Name:</span> {{data.name}}</h3></div>
+				<div class="magikform"><h3><span>Registation Number:</span> {{data.registration}}</h3></div>
+				<div class="magikform"><h3><span>Jobtitle:</span> {{data.jobtitle}}</h3></div>
+				<img src="{{data.signature}}"/>
+			</main>
+			<section ng-show="edit" class="mvpm-form">
+				<form novalidate class="simple-form" name="ImageForm">
+					<input type="text" name="formType" ng-model="data.formType" value="image" style="display:none;"/>
+					<section class="form-section">
+						<h4 class="form-section-title">Edit Profile</h4>
+						<div class="mvpm-field">
+							<label for="name">Name</label>
+							<input type="text" name="name" ng-model="data.name"/>
+						</div>
+							<div class="form-question mvpm-field">
+							<label for="name">Registration</label>
+							<input type="text" name="registration" ng-model="data.registration"/>
+						</div>
+						<div class="form-question mvpm-field">
+							<label for="name">Jobtitle</label>
+							<input type="text" name="jobtitle" ng-model="data.jobtitle"/>
+						</div>
+						<div class="form-question mvpm-field">
+							<label for="signature">Signature</label>
+							<input type="text" name="signature" ng-model="data.signature" style="display:none;"/>
+						</div>
+						<div class="form-question mvpm-field">
+							<image-lock name="signature" message="data.signature"></image-lock>
+						</div>
+					</section>
+					<input class="button save-form" type="submit" ng-click="update(data)" value="Save">
+				</form>
+			</section>
+			<nav class="control-bar">
+				<div class="row">
+					<div class="small-10 small-offset-1 columns">
+						<button class="small button success" ng-hide="edit" ng-click="edit = true">edit</button>
+						<button class="small button warning" ng-show="edit" ng-click="edit = false">stop editing</button>
+					</div>
+				</div>
+			</nav>
+		</section>
+	</main>
+</section>
