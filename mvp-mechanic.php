@@ -11,12 +11,15 @@ Author URI: http://nowbotica.com/
 define( 'MVPMSYSTEM', plugin_dir_path( __FILE__ ) );
 define( 'MVPMSYSTEM_URL', plugin_dir_url( __FILE__ ) );
 
-
 # Includes system wide helpers
 include( MVPMSYSTEM . '/parts/System.php');
 
 # Includes the user mangement module
 include( MVPMSYSTEM . '/parts/User.php');
+
+# Includes the Profile module
+include( MVPMSYSTEM . '/parts/Profile.php');
+include( MVPMSYSTEM . '/parts/Profile-model.php');
 
 # Includes the Listing module
 include( MVPMSYSTEM . '/parts/Listing.php');

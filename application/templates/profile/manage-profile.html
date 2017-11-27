@@ -1,54 +1,63 @@
-<section class="mvpm-ui-view">
-	<header class="view-header">
-		<!-- <h1 class="view-title">Engineer Profile</h1> -->
-		<h1 class="view-title">Client Profile</h1>
+<section class="mvpm-ui-view"><!-- should usually be 100% width of viewport -->
+	<header class="view-header viewport-100"><!-- our theme requires this to a secondary highlight color of 100% width of viewport -->
+		<div class="container"><!-- the actual useful area of our screen -->
+			<!-- <h1 class="view-title">Engineer Profile</h1> -->
+			<h1 class="view-title">username {{name}}</h1><!-- should be inline with our ui-view grid and global navigation -->
+		</div>
 	</header>
-	<main class="content-box">
-		<section ng-controller="ProfileCtrl" ng-hide="loading">
-			<main ng-hide="edit">
-				<div class="magikform"><h3><span>Username:</span> {{name}}</h3></div>
-				<!-- <weather details="{{profile.location}}"></weather> -->
-				<div class="magikform"><h3><span>Name:</span> {{data.name}}</h3></div>
-				<div class="magikform"><h3><span>Registation Number:</span> {{data.registration}}</h3></div>
-				<div class="magikform"><h3><span>Jobtitle:</span> {{data.jobtitle}}</h3></div>
-				<img src="{{data.signature}}"/>
-			</main>
-			<section ng-show="edit" class="mvpm-form">
-				<form novalidate class="simple-form" name="ImageForm">
-					<input type="text" name="formType" ng-model="data.formType" value="image" style="display:none;"/>
+	<div class="container"><!-- the actual useful area of our screen -->
+		<main class="content-box" ng-controller="ProfileCtrl" ng-hide="loading">
+			<section class="interface">
+				<form novalidate class="mvpm-form" name="ProfileForm">
+					<!-- <input type="text" name="formType" ng-model="data.formType" value="profile" style="display:none;"/> -->
 					<section class="form-section">
 						<h4 class="form-section-title">Edit Profile</h4>
 						<div class="mvpm-field">
-							<label for="name">Name</label>
-							<input type="text" name="name" ng-model="data.name"/>
-						</div>
-							<div class="form-question mvpm-field">
-							<label for="name">Registration</label>
-							<input type="text" name="registration" ng-model="data.registration"/>
-						</div>
-						<div class="form-question mvpm-field">
-							<label for="name">Jobtitle</label>
-							<input type="text" name="jobtitle" ng-model="data.jobtitle"/>
-						</div>
-						<div class="form-question mvpm-field">
-							<label for="signature">Signature</label>
-							<input type="text" name="signature" ng-model="data.signature" style="display:none;"/>
+							<label for="name">Nice Name</label>
+							<div class="flex-edit">
+								<div class="flex-edit-not-editing" ng-hide="edit">
+									<p class="text-flex-edit">Nice Name</p>
+								</div>
+								<div class="flex-edit-editing" ng-show="edit">
+									<input class="input-flex-edit" type="text" name="name" ng-model="data.name"/>
+								</div>
+							</div>
 						</div>
 						<div class="form-question mvpm-field">
-							<image-lock name="signature" message="data.signature"></image-lock>
+							<label for="name">Best Email</label>
+							<div class="flex-edit">
+								<div class="flex-edit-not-editing" ng-hide="edit">
+									<p class="text-flex-edit">Best Email</p>
+								</div>
+								<div class="flex-edit-editing" ng-show="edit">
+								<input type="text" name="best_email" ng-model="data.best_email"/>
+							</div>
+						</div>
+						<div class="form-question mvpm-field">
+							<label for="name">Zine</label>
+							<div class="flex-edit">
+								<div class="flex-edit-not-editing" ng-hide="edit">
+									<p class="text-flex-edit">CV</p>
+								</div>
+								<div class="flex-edit-editing" ng-show="edit">
+									<image-lock name="zine" message="data.zine"></image-lock>
+								</div>
+							</div>
 						</div>
 					</section>
-					<input class="button save-form" type="submit" ng-click="update(data)" value="Save">
+					<div class="form-submit-section">
+						<input class="btn dashboard-btn highlight"  ng-show="edit" type="submit" ng-click="update(data)" value="Save">
+					</div>
 				</form>
 			</section>
-			<nav class="control-bar">
+			<nav class="controls">
 				<div class="row">
-					<div class="small-10 small-offset-1 columns">
-						<button class="small button success" ng-hide="edit" ng-click="edit = true">edit</button>
-						<button class="small button warning" ng-show="edit" ng-click="edit = false">stop editing</button>
+					<div class="col-md-12">
+						<button class="btn btn-primary dashboard-btn" ng-hide="edit" ng-click="edit = true">edit</button>
+						<button class="btn btn-primary dashboard-btn" ng-show="edit" ng-click="edit = false">stop editing</button>
 					</div>
 				</div>
 			</nav>
-		</section>
-	</main>
+		</main>
+	</div>
 </section>

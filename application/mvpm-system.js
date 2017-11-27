@@ -42,6 +42,7 @@ MvpmApp.config(['$stateProvider', '$urlRouterProvider',
             controller: 'SystemCtrl as system',
             resolve: SystemCtrl.resolve
         };
+
         // first resolve a named service to cache listings from server
         var systemListing = {
             name: 'system.listing',  //mandatory
@@ -52,6 +53,7 @@ MvpmApp.config(['$stateProvider', '$urlRouterProvider',
             resolve: ListingCtrl.resolve,
             templateUrl: mvpmPartialsPath+'/listing/view.html'
         }
+        
         var systemListingAll = {
             name: 'system.listing.all',  //mandatory
             url: '/',
@@ -69,6 +71,7 @@ MvpmApp.config(['$stateProvider', '$urlRouterProvider',
                 } 
             }
         }
+        
         // second resolve a factory service wich maniplates listings
         var systemAbout = {
             name: 'system.about',  //mandatory

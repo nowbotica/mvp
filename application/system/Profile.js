@@ -1,5 +1,4 @@
 
-
 var ProfileCtrl = angular.module('ProfileCtrl', []);
 ProfileCtrl.controller('ProfileCtrl', ['$scope', '$stateParams', 'ProfileFactory', 
   function($scope, $stateParams, ProfileFactory
@@ -42,15 +41,16 @@ MvpmApp.factory('ProfileFactory', ['$http', '$q', '$stateParams', function($http
         var deferred = $q.defer();
         $http({
             method: 'POST',
-            url: window.TzuSystemApiUrl,
+            url: window.mvpmSystemApiUrl,
             params: {
-              action:   "tzu_get_profile",
-              security: window.TzuSystemSecurity
+              action:   "mvpm_get_profile",
+              security: window.mvpmSystemSecurity
             },
             headers : {
                 'Content-Type' : 'application/json'
             }
             }).success(function(data, status) {
+
                 deferred.resolve(data);
 
             }).error(function(data, status) {
@@ -63,11 +63,11 @@ MvpmApp.factory('ProfileFactory', ['$http', '$q', '$stateParams', function($http
         var deferred = $q.defer();
         $http({
             method: 'POST',
-            url: window.TzuSystemApiUrl,
+            url: window.mvpmSystemApiUrl,
             params: {
               changes: changes,
-              action:   "tzu_update_profile",
-              security: window.TzuSystemSecurity
+              action:   "mvpm_update_profile",
+              security: window.mvpmSystemSecurity
             },
             headers : {
                 'Content-Type' : 'application/json'
@@ -144,4 +144,79 @@ MvpmApp.factory('ProfileFactory', ['$http', '$q', '$stateParams', function($http
   //      // template: '<h5>Form Controls</h5>' 
   //    }
  //        }
-  // };
+  // };#
+
+window.toof = {
+  contact_info: [
+  {
+  "id":"best_email",
+  "name":"Best Email",
+  "icon":"fa-bath",
+  "share":"private",
+  "info":"me@home.website"
+  },
+  {
+  "id":"work_email",
+  "name":"Work Email",
+  "icon":"fa-code",
+  "share":"private",
+  "info":"me@myjob.website"
+  },
+  {
+  "id":"telephone",
+  "name":"Telephone",
+  "icon":"fa-telephone",
+  "share":"private",
+  "info":"international phone number"
+  },,
+  {
+  "id":"snapchat",
+  "name":"Snapchat",
+  "icon":"fa-object-group",
+  "share":"private",
+  "info":"snapchat phone number"
+  },
+  {
+  "id":"best_email_accessible",
+  "name":"Best Email Accessible",
+  "icon":"fa-sign-language",
+  "share":"private",
+  "info":"Me at aria breakdown"
+  },
+  {
+  "id":"online_one",
+  "name":"Online One",
+  "icon":"fa-coffee",
+  "share":"private",
+  "info":"@coffee-break"
+  },
+  {
+  "id":"online_two",
+  "name":"Online Two",
+  "icon":"fa-bug",
+  "share":"private",
+  "info":"slacking off"
+  },
+  {
+  "id":"Online Three",
+  "name":"online_three",
+  "icon":"fa-free-code-camp",
+  "share":"private",
+  "info":"@whereigetthingsdone"
+  },
+  {
+  "id":"snail_mail",
+  "name":"SnailMail",
+  "icon":"fa-address-card",
+  "share":"private",
+  "info":"123 Address St, Now Street, Postal Service"
+  },
+  {
+  "id":"lost_connections",
+  "name":"LostConnections",
+  "icon":"fa-snowflake-o",
+  "share":"public",
+  "info":"imreadyforthis@shymail.com"
+  }
+]
+}
