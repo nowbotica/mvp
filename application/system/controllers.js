@@ -11,7 +11,26 @@ SystemCtrl.controller('SystemCtrl', ['$scope', '$stateParams', 'loggedin',
 	// allows application wide access to {{system.image_path}}
 	this.image_path = window.mvpmImagePath;
 		
-	this.loggedin = loggedin;	
+    this.loggedin = loggedin;   
+
+    var that = this;
+
+    function doLogin(){
+        console.log('do', that, that.loggedin)
+        that.loggedin = 'loggedin';
+    }
+
+    console.log('yyyyy',this)
+    $scope.$on('loggedin', function (event, data) {
+        console.log('ZZZ',this)
+        doLogin()
+	    // this.loggedin = 'loggedin';	
+        console.log('logging in to site'); // 'Some data'
+        setTimeout(function(){
+            this.loggedin = 'loggedin';
+
+        }, 100)
+    });
 
 	// this.contextview = 'default'; 
 		// console.log('boom',loggedin)

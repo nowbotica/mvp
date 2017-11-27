@@ -15,7 +15,8 @@ MvpmApp.controller("testUserCtrl", function($scope, UserService, LoggedinService
 
         },100)      
         UserService.loginUser($scope.formData.username, $scope.formData.password).then(function(data) {
-            console.log('new',data)
+            // console.log('new',data, 
+                $scope.$parent.closeModal();
             if (data.loggedin ){
                 console.log('parent scope', $scope.$parent) //.system.loggedin = true;
                 $scope.dataMessage = 'login succes, close modal below'; 
@@ -65,7 +66,8 @@ MvpmApp.directive('loginModalLauncher', ['$parse', 'UserService', function($pars
           pdf: '@'
         },
         link: function(scope, element, attr) {
-        //https://gist.github.com/CMCDragonkai/6282750
+            
+            //https://gist.github.com/CMCDragonkai/6282750
            
             // scope.urlDomainPath = window.TzuUrlDomainPath;
 
@@ -103,9 +105,12 @@ MvpmApp.directive('loginModalLauncher', ['$parse', 'UserService', function($pars
             }
 
             scope.closeModal = function(){
+                  // going up!
+
                 scope.modalStatus  = '';
-                consoloe
+                // consoloe
                 window.setTimeout(function(){
+                    scope.$emit('loggedin', 'loggedin');
                     scope.actionStatus = '';
                     scope.$apply();
                 }, 100)
