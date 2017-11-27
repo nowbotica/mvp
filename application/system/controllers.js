@@ -20,16 +20,9 @@ SystemCtrl.controller('SystemCtrl', ['$scope', '$stateParams', 'loggedin',
         that.loggedin = 'loggedin';
     }
 
-    console.log('yyyyy',this)
+    // console.log('yyyyy',this)
     $scope.$on('loggedin', function (event, data) {
-        console.log('ZZZ',this)
         doLogin()
-	    // this.loggedin = 'loggedin';	
-        console.log('logging in to site'); // 'Some data'
-        setTimeout(function(){
-            this.loggedin = 'loggedin';
-
-        }, 100)
     });
 
 	// this.contextview = 'default'; 
