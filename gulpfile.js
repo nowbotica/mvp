@@ -13,12 +13,12 @@ var del         = require('del');
 var cleanCSS    = require('gulp-clean-css');
 
 // sass patj
-var sassPath  = 'application/sass';
+var sassPath  = 'application/scss';
 var buildPath = 'application/build';
 
 // Enter URL of your local server here
 // Example: 'http://localwebsite.dev'
-var URL = 'http://start.here';
+var URL = 'http://ka.b';
 
 // Check for --production flag
 var isProduction = !!(argv.production);
@@ -33,7 +33,13 @@ var COMPATIBILITY = [
 // File paths to various assets are defined here.
 var PATHS = {
   sass: [
-    sassPath+'/button.scss'
+    sassPath+'/build.scss'
+    // sassPath+'/_atoms.scss',
+    // sassPath+'/_cells.scss',
+    // sassPath+'/_molecules.scss',
+    // sassPath+'/print.scss',
+    // sassPath+'/typography.scss',
+    // sassPath+'/atoms.scss',
   ],
   javascript: [
     'assets/components/what-input/what-input.js',

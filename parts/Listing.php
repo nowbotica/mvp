@@ -118,6 +118,16 @@ function make_Listing_table()
     );
 
 
+    add_meta_box(
+        "listing_credits_meta",
+        "What are you talking about?",
+        "row_talkingabout",
+        "listing",
+        "normal",
+        "low"
+    );
+
+    
 }
 
 /*
@@ -173,10 +183,10 @@ function row_rating(){
 function row_customisation() {
     global $post;
     $custom = get_post_custom($post->ID);
-    $designers = $custom["row_designers"][0];
-    $builders = $custom["row_builders"][0];
-    $painters = $custom["row_painters"][0];
-    $completed = $custom["row_yearCompleted"][0];
+    $designers = $custom["row_designers"][0] ? $custom["row_designers"][0] : "row_designers";
+    $builders  = $custom["row_builders"][0]  ? $custom["row_builders"][0]  : "row_builders";
+    $painters  = $custom["row_painters"][0]  ? $custom["row_painters"][0]  : "row_painters";
+    $completed = $custom["row_yearCompleted"][0] ? $custom["row_yearCompleted"][0] : "row_yearCompleted";
     ?>
     <!--    // <p>Tag is a depandancy of nth child selection -->
     <p><label>Designed By:</label><p>
@@ -189,6 +199,17 @@ function row_customisation() {
     <p><label>Year Completed:</label></p>
     <p><input name="row_yearCompleted" value="<?php echo $completed; ?>" placeholder="row_yearCompleted"></p>
 
+    <?php
+}
+
+function row_talkingabout(){
+    global $post;
+    $custom = get_post_custom($post->ID);
+    // $rating = $custom["row_talkingabout"][0] ? $custom["row_talkingabout"][0] : 'row_talkingabout';
+    $talkingabout = $custom["row_talkingabout"][0] ? $custom["row_talkingabout"][0] : 'row_talkingabout';
+    ?>
+    <p><label>One, Two Three, or four words between, commas</label></p>
+    <p><input name="row_talkingabout" value="<?php echo $talkingabout; ?>" placeholder="row_talkingabout"/></p>
     <?php
 }
 
@@ -205,6 +226,7 @@ function save_listing_details(){
     update_post_meta($post->ID, "row_designers", $_POST["row_designers"]);
     update_post_meta($post->ID, "row_builders", $_POST["row_builders"]);
     update_post_meta($post->ID, "row_painters", $_POST["row_painters"]);
+    update_post_meta($post->ID, "row_talkingabout", $_POST["row_talkingabout"]);
 }
 
 /* Todo Customisations */
@@ -213,3 +235,20 @@ function save_listing_details(){
 //// Url not changing?
 //register_post_type( 'portfolio' , $args );
 //flush_rewrite_rules();
+
+
+function mvpm_listing_cpt_enqueue( $hook_suffix ){
+    $cpt = 'listing';
+
+    if( in_array($hook_suffix, array('post.php', 'post-new.php') ) ){
+        $screen = get_current_screen();
+        if( is_object( $screen ) && $cpt == $screen->post_type ){
+            // Register, enqueue scripts and styles here
+               wp_enqueue_script( 'mvpm-listing-cpt-script', plugins_url( '/parts/listing.js', 
+            __FILE__), '', '', true ); // "TRUE" - ADDS JS TO FOOTER
+
+        }
+    }
+}
+
+add_action( 'admin_enqueue_scripts', 'mvpm_listing_cpt_enqueue');

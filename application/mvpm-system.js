@@ -43,34 +43,42 @@ MvpmApp.config(['$stateProvider', '$urlRouterProvider',
             resolve: SystemCtrl.resolve
         };
 
-        // first resolve a named service to cache listings from server
-        var systemListing = {
-            name: 'system.listing',  //mandatory
-            abstract: true,
-            // url: '/',
-            parent: 'system',
-            controller: 'ListingCtrl as listing',
-            resolve: ListingCtrl.resolve,
-            templateUrl: mvpmPartialsPath+'/listing/view.html'
-        }
-        
-        var systemListingAll = {
-            name: 'system.listing.all',  //mandatory
+        var systemHome = {
+            name: 'system.home',  //mandatory
             url: '/',
-            parent: 'system.listing',
-        
-            views:{
-                'context-display' : {
-                    templateUrl: mvpmPartialsPath+'/listing/context-display.html',
-                },
-                'filters' : {
-                    templateUrl: mvpmPartialsPath+'/listing/filters.html',
-                },
-                'list' : {
-                    templateUrl: mvpmPartialsPath+'/listing/list.html',
-                } 
-            }
+            parent: 'system',
+            // controller: 'HomeCtrl as listing',
+            // resolve: HomeCtrl.resolve,
+            templateUrl: mvpmPartialsPath+'/landing.html'
         }
+        
+        // var systemListing = {
+        //     name: 'system.listing',  //mandatory
+        //     abstract: true,
+        //     // url: '/',
+        //     parent: 'system',
+        //     controller: 'ListingCtrl as listing',
+        //     resolve: ListingCtrl.resolve,
+        //     templateUrl: mvpmPartialsPath+'/listing/view.html'
+        // }
+        
+        // var systemListingAll = {
+        //     name: 'system.listing.all',  //mandatory
+        //     url: '/',
+        //     parent: 'system.listing',
+        
+        //     views:{
+        //         'context-display' : {
+        //             templateUrl: mvpmPartialsPath+'/listing/context-display.html',
+        //         },
+        //         'filters' : {
+        //             templateUrl: mvpmPartialsPath+'/listing/filters.html',
+        //         },
+        //         'list' : {
+        //             templateUrl: mvpmPartialsPath+'/listing/list.html',
+        //         } 
+        //     }
+        // }
         
         // second resolve a factory service wich maniplates listings
         var systemAbout = {
@@ -107,8 +115,9 @@ MvpmApp.config(['$stateProvider', '$urlRouterProvider',
     
         $stateProvider
             .state(system)
-            .state(systemListing)
-            .state(systemListingAll)
+            .state(systemHome)
+            // .state(systemListing)
+            // .state(systemListingAll)
             .state(systemAbout)
             .state(systemProfile)
 
