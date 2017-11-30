@@ -26,6 +26,9 @@
                 <a class="nav-link" href="" ng-click="showRegister()" ng-controller="UserActionsCtrl">Register</a>            
               </li>
               <li class="nav-item" ng-if="system.loggedin == 'loggedin'">
+                <a class="nav-link" ui-sref="system.find">Find</a>
+              </li>
+              <li class="nav-item" ng-if="system.loggedin == 'loggedin'">
                 <a class="nav-link" ui-sref="system.profile">Profile</a>
               </li>
               <li class="nav-item" ng-if="system.loggedin == 'loggedin'">

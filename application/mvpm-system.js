@@ -90,6 +90,15 @@ MvpmApp.config(['$stateProvider', '$urlRouterProvider',
             // resolve: ListingCtrl.resolve
         };
 
+        var systemFind = {
+            name: 'system.find',  //mandatory
+            url: '/find',
+            parent: 'system',
+            templateUrl: mvpmPartialsPath+'/mvp.html'
+            // controller: 'ListingCtrl as listing',
+            // resolve: ListingCtrl.resolve
+        };
+
         var systemProfile = { 
             name: 'system.profile',  //mandatory
             url: '/profile',
@@ -116,6 +125,7 @@ MvpmApp.config(['$stateProvider', '$urlRouterProvider',
         $stateProvider
             .state(system)
             .state(systemHome)
+            .state(systemFind)
             // .state(systemListing)
             // .state(systemListingAll)
             .state(systemAbout)
