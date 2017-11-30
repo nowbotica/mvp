@@ -52,33 +52,33 @@ MvpmApp.config(['$stateProvider', '$urlRouterProvider',
             templateUrl: mvpmPartialsPath+'/landing.html'
         }
         
-        // var systemListing = {
-        //     name: 'system.listing',  //mandatory
-        //     abstract: true,
-        //     // url: '/',
-        //     parent: 'system',
-        //     controller: 'ListingCtrl as listing',
-        //     resolve: ListingCtrl.resolve,
-        //     templateUrl: mvpmPartialsPath+'/listing/view.html'
-        // }
+        var systemListing = {
+            name: 'system.listing',  //mandatory
+            abstract: true,
+            // url: '/',
+            parent: 'system',
+            controller: 'ListingCtrl as listing',
+            resolve: ListingCtrl.resolve,
+            templateUrl: mvpmPartialsPath+'/listing/view.html'
+        }
         
-        // var systemListingAll = {
-        //     name: 'system.listing.all',  //mandatory
-        //     url: '/',
-        //     parent: 'system.listing',
+        var systemListingAll = {
+            name: 'system.listing.all',  //mandatory
+            url: '/listing',
+            parent: 'system.listing',
         
-        //     views:{
-        //         'context-display' : {
-        //             templateUrl: mvpmPartialsPath+'/listing/context-display.html',
-        //         },
-        //         'filters' : {
-        //             templateUrl: mvpmPartialsPath+'/listing/filters.html',
-        //         },
-        //         'list' : {
-        //             templateUrl: mvpmPartialsPath+'/listing/list.html',
-        //         } 
-        //     }
-        // }
+            views:{
+                'context-display' : {
+                    templateUrl: mvpmPartialsPath+'/listing/context-display.html',
+                },
+                'filters' : {
+                    templateUrl: mvpmPartialsPath+'/listing/filters.html',
+                },
+                'list' : {
+                    templateUrl: mvpmPartialsPath+'/listing/list.html',
+                } 
+            }
+        }
         
         // second resolve a factory service wich maniplates listings
         var systemAbout = {
@@ -126,8 +126,8 @@ MvpmApp.config(['$stateProvider', '$urlRouterProvider',
             .state(system)
             .state(systemHome)
             .state(systemFind)
-            // .state(systemListing)
-            // .state(systemListingAll)
+            .state(systemListing)
+            .state(systemListingAll)
             .state(systemAbout)
             .state(systemProfile)
 
