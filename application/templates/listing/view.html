@@ -1,10 +1,14 @@
-  <section>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
 
-    <article ui-view="context-display"></article>
-
-
+<section class="mvpm-ui-view"><!-- should usually be 100% width of viewport -->
+    <header class="view-header viewport-100"><!-- our theme requires this to a secondary highlight color of 100% width of viewport -->
+        <div class="container"><!-- the actual useful area of our screen -->
+            <!-- <article ui-view="context-display"></article> -->
+            <h1 class="view-title">Seach for space</h1><!-- should be inline with our ui-view grid and global navigation -->
+        </div>
+    </header>
+    <div style="float:left;width:100%">
     <div class="container">
         <section class="row">
         	<div class="col-md-4 col-lg-3">
@@ -12,9 +16,9 @@
             </div>
             <div class="col-md-8 col-lg-9">
                 <main ui-view="list"></main>
-                
+            </div>   
         </section>
     </div>
-
+    </section>
 
 </section>

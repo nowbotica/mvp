@@ -9169,7 +9169,8 @@ input[type=range]:focus::-ms-fill-upper {
   }
 
   .bg-dark {
-    background-color:#4a9aa6 !important;
+    background-color:#ddb869 !important;
+    /*background-color:#4a9aa6 !important;*/
   }
 
 p.status {
@@ -9235,6 +9236,7 @@ section > footer.hybrid-footer > .container .footer-dash .dashboard-button {
 
 .mvpm-ui-view {
   /*margin-top:40px;*/
+  min-height: 700px;
 }
 
 
@@ -9299,10 +9301,14 @@ section > footer.hybrid-footer > .container .footer-dash .dashboard-button {
   float: left;
 }
 .content-box > .controls {
-  background:#4a9aa6;
+  background: #c5c3bd;
   width:100%;
   padding:20px;
   float: left;
+  float: left;
+    height: 70px;
+    box-sizing: border-box;
+    display: block;
 
 }
 .dashboar-btn{
@@ -9310,10 +9316,11 @@ section > footer.hybrid-footer > .container .footer-dash .dashboard-button {
 }
 .content-box > .controls .dashboard-btn{
   background:white;
-  color:#4a9aa6;
+  color:#282928;
   width:100%;
   /*padding:20px;*/
       padding: 2px 6px;
+      border:1px solid #ddb869 !important;
 
 }
 .btn-flex-edit
@@ -9382,11 +9389,11 @@ input[type="text"], input[type="email"], input[type="url"], input[type="password
 
 p.text-flex-edit{
   /*Berkshire Swash*/
-    font-family: 'Indie Flower', cursive;
+    /*font-family: 'Indie Flower', cursive;*/
 }
 .mvpm-field input {
   margin-bottom: 0px;
-    font-family: 'Indie Flower', cursive;
+    /*font-family: 'Indie Flower', cursive;*/
     line-height: 1;
     height: 40px;
     -webkit-appearance: none;
@@ -9466,9 +9473,11 @@ p.text-flex-edit{
 .site-wrapper {
   width:100vw;
   height:100vh;
-  background: url('build/images/upgrade.jpg');
+  /*background: url('build/images/upgrade.jpg');*/
+  background: url('build/images/IMAG01655.jpg');
   position: fixed;
-  background-size:100%;
+  background-size:cover;
+  background-position: bottom;
 }
 .site-wrapper-inner {
 
@@ -9480,7 +9489,7 @@ p.text-flex-edit{
 .center-content {
   padding:30px;
   border-radius:15px;
-  background:white;
+  background:rgba(255,255,255, 0.4);;
   border:1px solid grey;
   box-shadow: 0px 5px 7px #282828;
   /*max-width:200px;*/
@@ -9948,10 +9957,6 @@ a.ice-block:hover {
 } 
 
 /*$size: 150px; // cube length*/
-body {
-  text-align: center;
-  padding: 50px;
-} 
 .scene {
   display: inline-block;
   margin-top: 50px;
@@ -10258,3 +10263,9 @@ body {
 }
 
 */
+
+.lead {
+    font-size: 1.25rem;
+     font-weight: normal; 
+    /* color: blue; */
+}

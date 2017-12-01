@@ -1,7 +1,9 @@
 // Theme Variables
 $loading-gif: '../images/loading.gif';
 $loading-gif: $ecowelle-loading-gif;
-
+$desert-color: #ddb869;
+$winter-color: #4a9aa6;
+$default-color: #3c3c3d;
 
 @import "atoms";
 @import "cells";

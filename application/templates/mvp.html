@@ -1,36 +1,48 @@
-<div class="row cloud-widget" ng-controller="CloudCtrl">
-	<div class="col-sm-8">
-		<div class="skills-list">
-		<p>loading bar</p>
-		<!-- {{skills}} -->
-		<button class="tc tc-{{skill.weight}}" 
-			ng-click="addFilter(skill.text)" 
-			ng-repeat="skill in skills">
-			{{skill.text}}
-			<span class="label label-info"> {{skill.weight}}</span>
-		</button>
-		<!-- <cloud skills="{{skills}}"></cloud> -->
-		<!-- <cloud ng-repeat="skill in skills" value="{{skill.weight}}" skill="{{skill.text}}"> -->
+<section class="mvpm-ui-view"><!-- should usually be 100% width of viewport -->
+	<header class="view-header viewport-100"><!-- our theme requires this to a secondary highlight color of 100% width of viewport -->
+		<div class="container"><!-- the actual useful area of our screen -->
+			<!-- <h1 class="view-title">Engineer Profile</h1> -->
+			<h1 class="view-title">Find by filter</h1><!-- should be inline with our ui-view grid and global navigation -->
+		</div>
+	</header>
+	<main style="float:left;width:100%;margin:30px 0;">
+	<div class="container"><!-- the actual useful area of our screen -->
+		<div class="row cloud-widget" ng-controller="CloudCtrl">
+			<div class="col-sm-8">
+				<div class="skills-list">
+				<p>loading bar</p>
+				<!-- {{skills}} -->
+				<button class="tc tc-{{skill.weight}}" 
+					ng-click="addFilter(skill.text)" 
+					ng-repeat="skill in skills">
+					{{skill.text}}
+					<span class="label label-info"> {{skill.weight}}</span>
+				</button>
+				<!-- <cloud skills="{{skills}}"></cloud> -->
+				<!-- <cloud ng-repeat="skill in skills" value="{{skill.weight}}" skill="{{skill.text}}"> -->
 
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="well">
+					<h4>Candidates</h4>
+					<ul>
+						<li ng-repeat="candidate in activeUsers">
+							<a href="#/profile/{{candidate.username}}" class="btn btn-success" 
+							>{{candidate.username}}</a>
+						</li>
+					</ul>
+				</div>
+				<div class="well">
+					<h4>Active Filters</h4>
+					<button class="btn btn-primary" 
+						ng-click="removeFilter(skill)" 
+						ng-repeat="skill in filters">
+						{{skill}}
+				</button>
+				</div>
+			</div>
 		</div>
 	</div>
-	<div class="col-sm-4">
-		<div class="well">
-			<h4>Candidates</h4>
-			<ul>
-				<li ng-repeat="candidate in activeUsers">
-					<a href="#/profile/{{candidate.username}}" class="btn btn-success" 
-					>{{candidate.username}}</a>
-				</li>
-			</ul>
-		</div>
-		<div class="well">
-			<h4>Active Filters</h4>
-			<button class="btn btn-primary" 
-				ng-click="removeFilter(skill)" 
-				ng-repeat="skill in filters">
-				{{skill}}
-		</button>
-		</div>
-	</div>
-</div>
+</main>
+</section>
