@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-6 col-lg-12" ng-repeat="listing in listing.listings">
+    <div class="col-md-6 col-lg-12" ng-repeat="listing in listing.listings.data">
     	<article class="card">
         	<h3 class="card-header">{{listing.name}}
 				<span style="float:right"><input-rating rated="listing.rating"></input-rating></span>

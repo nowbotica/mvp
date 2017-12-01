@@ -1,13 +1,20 @@
 MvpmApp.controller('ListingCtrl', ListingCtrl)
 MvpmApp.factory('ListingService', ListingService);
 
-// inject InboxService and bind the 
-// response to `this.messages`
+/* 
+ * ListingCtrl
+ * Used as parent view controller . handles resolve data for view
+ * // inject ListingService and bind the 
+ * // response to `this.messages`
+ *
+ */
 function ListingCtrl(listings, FilterService) {
     console.log('listings', listings)
-    this.listings = listings;
-    FilterService.init(listings, '2354')
-    this.foo = 'bar'
+    
+    // assigning the return object {data: ourdataset } allows 
+    // updates of the view to happen automagikaly when the service updates
+    this.listings = FilterService.init(listings, '2354'); // YAGNI
+
 }
 // https://toddmotto.com/resolve-promises-in-angular-routes/
 ListingCtrl.resolve = {
