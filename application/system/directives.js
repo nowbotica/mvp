@@ -84,14 +84,22 @@ MvpmApp.directive('filterLocation', function() {
     return {
         templateUrl: mvpmPartialsPath+'/directives/filter-location.html',
         scope: {
-      		rated: '='
-    	},
+      		rated: '=',
+          toggle: '&'
+        },
         controller: function($scope){
-			  $scope.choices = [
-			  	{name:'London',value:'London'},
-			  	{name:'Seoul',value:'Seoul'},
-			  	{name:'Buchurest',value:'Buchurest'}
-			  ];
+          $scope.choices = [
+            {name:'London',value:'London'},
+            {name:'Seoul',value:'Seoul'},
+            {name:'Buchurest',value:'Buchurest'}
+          ];
+          // The function as named in directive template
+          $scope.f = function() {
+            // triggering the function passed to toggle="scopeFn(args)" 
+            // when setting up the directive 
+            $scope.toggle({message: 'moving'});
+            // $scope.toggle('string');
+          };
         }
     };
 });
@@ -100,9 +108,9 @@ MvpmApp.directive('filterDuration', function() {
     return {
         templateUrl: mvpmPartialsPath+'/directives/filter-duration.html',
         scope: {
-      		rated: '='
+          rated: '='
     	},
-        controller: function($scope){
+      controller: function($scope){
 			  $scope.durations = [
 			  	{name:'20 mins',value:'20 mins'},
 			  	{name:'45 mins',value:'45 mins'},

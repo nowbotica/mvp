@@ -7,17 +7,18 @@ MvpmApp.directive('sortByFilterBy', ['$parse', '_', 'FilterService', function($p
         templateUrl: mvpmPartialsPath+'/directives/sort-by-filter-by.html',
         // restrict: 'EA',
         scope: {
-            searchid: '=',
+            // searchid: '=',
             dataset: '=',
-            filter: '@'
+            // filter: '@'
         },
-        // transclude: true,
-        // controllerAs: 'fjkCtrl',
         controller: function($scope){
-
-            this.controlFilter = function(dataObj){
-                $scope.applyFilter(dataObj)
+        	$scope.changeSomething = function(argon){
+            	console.log('click', argon)
+            	FilterService.changeSomething(argon);
             }
+        //     this.controlFilter = function(dataObj){
+        //         $scope.applyFilter(dataObj)
+        //     }
         },
         link: function(scope, element, attr) {
 
@@ -28,11 +29,7 @@ MvpmApp.directive('sortByFilterBy', ['$parse', '_', 'FilterService', function($p
             scope.filter = {};
             console.log('bubbling down', FilterService)
 
-            // FilterService.go(scope, 'bar');
-            scope.changeSomething = function(){
-            	console.log('click')
-            	FilterService.changeSomething();
-            }
+            // 
 
             // this 'works' as init callback
             // setTimeout(function(){
@@ -126,16 +123,18 @@ MvpmApp.service('FilterService', ['_', function(_) {
         return this.dataset;
     };
 
-    this.changeSomething = function(callback){
-    	var something = this.originalDataset;
-    	something.splice(2, 10);
-    	this.dataset.data = something;
-    	console.log(callback)
+    this.changeSomething = function(argon){
+
+    	console.log('ar', argon)
+
+    	// this.dataset.data = private['callback'](this.originalDataset, 10);
     }
 
-
-    private.callback = function(){
+    private.callback = function(data, args){
+    	var something = data;
+    	something.splice(2, args);
     	console.log('working')
+    	return something;
     }
     // this.setFilters = function(type, field){
     //   if(type == 'minMax'){
