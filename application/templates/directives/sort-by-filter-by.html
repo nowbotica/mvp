@@ -1,0 +1,67 @@
+<section>
+    <div class="row">
+        <div class="col-xs-6 col-sm-12 col-md-12">
+            <nav class="row">
+                <!-- <div class="col-sm-2"><h6>Filter by:</h6></div> -->
+                <div class="col-sm-4">
+                    <div class="filter-by">
+                        <span class="ui-title"><a href="#">Name</a></span>
+                        <span class="ui-widget">
+                            <p>{{filter.Name}}</p>
+                            <!-- <tzu-search-input choices="filter.Name"></tzu-search-input> -->
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="filter-by">
+                        <span class="ui-title"><a href="#">Stars</a></span>
+                        <span class="ui-widget">
+                            <nav role="adjustment">
+                                <a href="" ng-click="applySort('Stars', 'asc')"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+                                <a href="" ng-click="applySort('stars', 'des')"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+                            </nav>
+                            <!-- <tzu-radio-input choices="filter.Stars"></tzu-radio-input> -->
+                            <!-- callback-emitter="applyFilter(dataObj)" -->
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="filter-by">
+                        <span class="ui-title"><a href="#">Location</a></span>
+                        <span class="ui-widget">
+                            <nav role="adjustment">
+                                <a href="" ng-click="applySort('Location', 'asc')"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+                                <a href="" ng-click="applySort('Location', 'des')"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+                            </nav>
+                            <!-- <tzu-checkbox-input choices="filter.Location"></tzu-checkbox-input> -->
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="filter-by">
+                        <span class="ui-title"><a href="#">Distance</a></span>
+                        <span class="ui-widget">
+                            <nav role="adjustment">
+                                <a href="" ng-click="applySort('Distance', 'asc')"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+                                <a href="" ng-click="applySort('distance', 'des')"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+                            <!-- <tzu-select-input choices="filter.Distance"></tzu-select-input> -->
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="filter-by">
+                        <span class="ui-title"><a href="#">MinCost</a></span>
+                        <span class="ui-widget">
+                            <nav role="adjustment">
+                                <a href="" ng-click="applySort('MinCost', 'asc')"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+                                <a href="" ng-click="applySort('MinCost', 'des')"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>    
+                            </nav>
+                            <!-- <tzu-range-input choices="filter.MinCost"></tzu-range-input> -->
+                        </span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</section>
+

@@ -3,9 +3,10 @@ MvpmApp.factory('ListingService', ListingService);
 
 // inject InboxService and bind the 
 // response to `this.messages`
-function ListingCtrl(listings) {
+function ListingCtrl(listings, FilterService) {
     console.log('listings', listings)
     this.listings = listings;
+    FilterService.init(listings, '2354')
     this.foo = 'bar'
 }
 // https://toddmotto.com/resolve-promises-in-angular-routes/
