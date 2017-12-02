@@ -84,8 +84,7 @@ MvpmApp.directive('filterLocation', function() {
     return {
         templateUrl: mvpmPartialsPath+'/directives/filter-location.html',
         scope: {
-      		rated: '=',
-          toggle: '&'
+          filter: '&' // this binds a named function 
         },
         controller: function($scope){
           $scope.choices = [
@@ -94,11 +93,15 @@ MvpmApp.directive('filterLocation', function() {
             {name:'Buchurest',value:'Buchurest'}
           ];
           // The function as named in directive template
-          $scope.f = function() {
+          $scope.applyFilter = function() {
             // triggering the function passed to toggle="scopeFn(args)" 
             // when setting up the directive 
-            $scope.toggle({message: 'moving'});
-            // $scope.toggle('string');
+            $scope.filter({
+                organon: {
+                  callback: 'filterLocation', 
+                  args: {location:'London'}
+                }
+            });
           };
         }
     };

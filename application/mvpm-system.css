@@ -8843,7 +8843,7 @@ a.text-dark:focus, a.text-dark:hover {
 /*///////////////// Select directive*/
 .choose-this {
   background: transparent;
-  border: 1px solid #4a9aa6;
+  border: 1px solid #ddb869;
   border-radius: 5px;
   height: 40px;
   overflow: hidden;
@@ -8869,13 +8869,13 @@ a.text-dark:focus, a.text-dark:hover {
 
 .choose-this .fa {
   font-size:23px;
-  color:#E95420;
+  color:#ddb869 ;//#E95420;
   postition:relative;
   right:0;
   top:0;
   float: right;
   padding: 5px 10px;
-  border-left: 1px solid #4a9aa6;
+  border-left: 1px solid #ddb869;
 } 
 
 
@@ -10268,4 +10268,17 @@ a.ice-block:hover {
     font-size: 1.25rem;
      font-weight: normal; 
     /* color: blue; */
+}
+
+
+/*//////////////// listing cards */
+article.card {
+  border-radius:0;
+  margin-top:40px;
+}
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #c5c3bd;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }

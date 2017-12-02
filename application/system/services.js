@@ -1,6 +1,5 @@
-
-
 // console.log('system wide services here, for now filtering component');
+
 MvpmApp.directive('sortByFilterBy', ['$parse', '_', 'FilterService', function($parse, _, FilterService){
     return {
         replace: true,
@@ -12,13 +11,25 @@ MvpmApp.directive('sortByFilterBy', ['$parse', '_', 'FilterService', function($p
             // filter: '@'
         },
         controller: function($scope){
-        	$scope.changeSomething = function(argon){
-            	console.log('click', argon)
-            	FilterService.changeSomething(argon);
+        	// The variable here is probs a returned object
+        	$scope.applyFilter = function(instructions){
+            	console.log('instructing FilterService', instructions)
+            	FilterService.applyFilter(instructions.callback, instructions.args);
             }
-        //     this.controlFilter = function(dataObj){
-        //         $scope.applyFilter(dataObj)
-        //     }
+
+            // scope.filter.Name     = 'Elasticy Search';
+            // radio
+            // scope.filter.Stars    = FilterService.setFilters('optionsArray', 'Stars');
+            // checkbox
+            // scope.filter.Location = FilterService.setFilters('checkboxArray', 'Location');
+            // select
+            // scope.filter.Distance = FilterService.setFilters('numericalSelectArray', 'Distance');
+            // range
+            // scope.filter.MinCost  = FilterService.setFilters('minMax', 'MinCost');
+            // $scope.applySort = function(category, direction){
+                // we want to sort only filtered items
+                // scope.dataset = FilterService.sort(scope.dataset, category, direction)
+            // }
         },
         link: function(scope, element, attr) {
 
@@ -27,7 +38,7 @@ MvpmApp.directive('sortByFilterBy', ['$parse', '_', 'FilterService', function($p
             var searchId;
 
             scope.filter = {};
-            console.log('bubbling down', FilterService)
+            // console.log('bubbling down', FilterService)
 
             // 
 
@@ -46,25 +57,10 @@ MvpmApp.directive('sortByFilterBy', ['$parse', '_', 'FilterService', function($p
                 // FilterService.setFilters(type, field){ 
                     
                     // search
-                    // scope.filter.Name     = 'Elasticy Search';
-                    // radio
-                    // scope.filter.Stars    = FilterService.setFilters('optionsArray', 'Stars');
-                    // checkbox
-                    // scope.filter.Location = FilterService.setFilters('checkboxArray', 'Location');
-                    // select
-                    // scope.filter.Distance = FilterService.setFilters('numericalSelectArray', 'Distance');
-                    // range
-                    // scope.filter.MinCost  = FilterService.setFilters('minMax', 'MinCost');
+
                 // });
             // }, 2000);
 
-            scope.applySort = function(category, direction){
-                // we want to sort only filtered items
-                scope.dataset = FilterService.sort(scope.dataset, category, direction)
-            }
-            scope.applyFilter = function(dataObj){
-                scope.dataset = FilterService.filter(dataset, dataObj)
-            }
 
         }
     };
@@ -123,19 +119,23 @@ MvpmApp.service('FilterService', ['_', function(_) {
         return this.dataset;
     };
 
-    this.changeSomething = function(argon){
-
-    	console.log('ar', argon)
-
-    	// this.dataset.data = private['callback'](this.originalDataset, 10);
+    this.applyFilter = function(callback, args){
+        // console.log('appp', argon)
+        this.dataset.data = private[callback](this.originalDataset, args.location);
     }
 
-    private.callback = function(data, args){
-    	var something = data;
-    	something.splice(2, args);
-    	console.log('working')
-    	return something;
+    private.filterLocation = function(dataset, location){
+
+        console.log('find ', location, ' in ', dataset)
+        
     }
+
+    // private.callback = function(callback, args){
+    	// var something = data;
+    	// something.splice(2, args);
+    	// console.log('working')
+    	// return something;
+    // }
     // this.setFilters = function(type, field){
     //   if(type == 'minMax'){
     //     return private.setMinMax(field);
