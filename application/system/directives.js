@@ -93,13 +93,13 @@ MvpmApp.directive('filterLocation', function() {
             {name:'Buchurest',value:'Buchurest'}
           ];
           // The function as named in directive template
-          $scope.applyFilter = function() {
+          $scope.applyFilter = function(location) {
             // triggering the function passed to toggle="scopeFn(args)" 
             // when setting up the directive 
             $scope.filter({
                 organon: {
                   callback: 'filterLocation', 
-                  args: {location:'London'}
+                  args: {location:location}
                 }
             });
           };

@@ -114,43 +114,24 @@ MvpmApp.service('FilterService', ['_', function(_) {
         this.dataset = {
         	data: this.originalDataset
         }
+
         this.searchId = searchId;
 
         return this.dataset;
     };
 
     this.applyFilter = function(callback, args){
-        // console.log('appp', argon)
+
         this.dataset.data = private[callback](this.originalDataset, args.location);
     }
 
     private.filterLocation = function(dataset, location){
 
-        console.log('find ', location, ' in ', dataset)
-        
-    }
+        return _.filter(dataset, function(iteree){ 
 
-    // private.callback = function(callback, args){
-    	// var something = data;
-    	// something.splice(2, args);
-    	// console.log('working')
-    	// return something;
-    // }
-    // this.setFilters = function(type, field){
-    //   if(type == 'minMax'){
-    //     return private.setMinMax(field);
-    //   }
-    //   if(type == 'optionsArray'){
-    //     return private.setOptionsArray(field);
-    //   }
-    //   if(type == 'numericalSelectArray'){
-    //     return private.setNumericalSelectArray(field);
-    //   }
-    //   if(type == 'checkboxArray'){
-    //     return private.setCheckboxArray(field);
-    //   }
-    // }
-    
+            return iteree['location'] === location
+        })      
+    }
 
     // private.setMinMax = function(field){
     //   return {
