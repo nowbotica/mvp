@@ -1,0 +1,23 @@
+<div class="tzu-build">
+	<a href="" class="nav-link action hide-if-loading {{actionStatus}}" href="#" ng-click="openModal(reportid)">Create Membership</a>
+
+
+	<div class="tzu-modal-background {{actionStatus}}" ng-show="actionStatus == 'loading'">
+		<section class="tzu-modal {{modalStatus}}">
+			<main class="tzu-modal-content" role="main">
+			<pre>				
+			would you like a listing?
+			|
+			what would you like for your listing name
+			|
+			please provide an administration email
+			|
+			</pre>
+			<!-- <user-register></user-register> -->
+			</main>
+			<footer class="tzu-modal-footer">
+				<a href="" class="button small warning" ng-click="closeModal()">Close dialogue</a>
+			</footer>
+		</section>
+	</div>
+</div>

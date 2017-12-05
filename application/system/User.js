@@ -28,6 +28,58 @@ MvpmApp.controller("testUserCtrl", function($scope, UserService, LoggedinService
     }
 });
 
+
+MvpmApp.directive('userCreateMembership', ['UserService', function(UserService) {
+    return {
+        restrict: 'AE',
+        replace: true,
+        scope: {
+            'username': '&',
+            'password': '&',
+            'form': '&'
+        },
+        controller: 'testUserCtrl',
+        template: '<p>mvpmPartialsPath+/user/create-membership.html</p>',
+        // templateUrl: mvpmPartialsPath+'/user/user-register.html',
+    }
+}]);
+
+MvpmApp.directive('createMembershipModal', ['$parse', 'UserService', function($parse, UserService){
+    return {
+        replace: true,
+        templateUrl: mvpmPartialsPath+'/user/create-membership-modal.html',
+        scope: {
+          reportid: '@',
+          pdf: '@'
+        },
+        link: function(scope, element, attr) {
+            scope.openModal = function(g){
+                scope.actionStatus = 'loading';
+                // ActionFactory.createPdf(g).then(function(resp){
+                    // scope.pdf = resp; //return value' //scope.report_id;
+                    window.setTimeout(function(){
+                        scope.modalStatus  = 'loading';
+                        scope.$apply();
+                    }, 10)
+                // }); 
+            }
+
+            scope.closeModal = function(){
+                // going up!
+
+                scope.modalStatus  = '';
+                // consoloe
+                window.setTimeout(function(){
+                    scope.$emit('loggedin', 'loggedin');
+                    scope.actionStatus = '';
+                    scope.$apply();
+                }, 100)
+            }
+        }
+    };
+}]);
+
+
 MvpmApp.directive('userLogin', ['UserService', function(UserService) {
     return {
         restrict: 'AE',
@@ -41,21 +93,6 @@ MvpmApp.directive('userLogin', ['UserService', function(UserService) {
         templateUrl: mvpmPartialsPath+'/user/user-login.html',
     }
 }]);
-
-MvpmApp.controller("UserActionsCtrl", function($scope, UserService, LoggedinService) {
-    $scope.showLogin = function(){
-        console.log('show login', $scope.$parent.system.loggedin)
-    };
-    $scope.showRegister = function(){
-        console.log('register')
-
-    };
-    $scope.userLogout = function(){
-        UserService.logoutUser().then(function(data) {
-            $scope.$parent.system.loggedin = 'loggedout';
-        });  
-    }
-});
 
 MvpmApp.directive('loginModalLauncher', ['$parse', 'UserService', function($parse, UserService){
     return {
@@ -118,6 +155,23 @@ MvpmApp.directive('loginModalLauncher', ['$parse', 'UserService', function($pars
         }
     };
 }]);
+
+
+MvpmApp.controller("UserActionsCtrl", function($scope, UserService, LoggedinService) {
+    $scope.showLogin = function(){
+        console.log('show login', $scope.$parent.system.loggedin)
+    };
+    $scope.showRegister = function(){
+        console.log('register')
+
+    };
+    $scope.userLogout = function(){
+        UserService.logoutUser().then(function(data) {
+            $scope.$parent.system.loggedin = 'loggedout';
+        });  
+    }
+});
+
 
 /*
 * User Service

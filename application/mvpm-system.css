@@ -9270,8 +9270,16 @@ input[type=range]:focus::-ms-fill-upper {
 
   .bg-dark {
     background-color:#ddb869 !important;
+ 
+ } .bg-dark a{
+        text-shadow: 2px 1px 1px #bf9606
     /*background-color:#4a9aa6 !important;*/
+        /*box-shadow: 1px 1px 1px #ece8df;*/
+    /*border-bottom: 1px solid #9f7213;*/
   }
+  .loggedout .navbar.bg-dark {
+  /*background-color:transparent !important;*/
+}
 
 p.status {
   color:black;
@@ -9321,9 +9329,7 @@ section > footer.hybrid-footer > .container .footer-dash .dashboard-button {
 .mvp-mechanic.loggedout .wrap-interface {
   padding-top:0;
 }
-.loggedout .navbar.bg-dark {
-  background-color:transparent !important;
-}
+
 .wrap-footer {
   background: white;
   border-bottom:10px solid #e8f4f6;
