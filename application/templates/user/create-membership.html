@@ -1,1 +1,50 @@
-<p>DFSF</p>
+
+
+<form id="login" class="mvpm-form" style >
+	<div class="spinner" ng-show="doingsomething === true"></div>
+	<div class="step-one ng-cloak" ng-hide="doingsomething === true" ng-show="step == 'one'" ng-cloak>
+	    <p class="status">{{dataMessage}}</p>
+	    <div class="row">
+	        <div class="col-md-3">
+	    		<label for="username">Screen Name</label>
+	        </div>
+	        <div class="col-md-9">
+	            <input id="username" type="text" name="username" ng-model="formData.username" ng-required>
+	        </div>
+	    </div>
+	    <div class="row">
+	        <div class="col-md-3">
+			    <label for="email">Admin Email</label>
+	        </div>
+	        <div class="col-md-9">
+			    <input id="email" type="email" name="email" ng-model="formData.email" ng-required>
+	        </div>
+	    </div>
+	    <div class="row">
+	        <div class="col-md-3">
+	            <label for="password">Password</label>
+	        </div>
+	        <div class="col-md-9">
+	            <input id="password" type="password" name="password" ng-model="formData.password">
+	        </div>
+	    </div>
+
+	    <div class="row">
+	        <div class="col-md-12">
+	            <input class="submit btn" class="btn login" type="submit"  ng-click="createMember()" name="submit" value="Create Membership">
+	        </div>
+	    </div>
+	</div>
+	<div class="step-one ng-cloak" ng-show="step == 'two'" ng-cloak>
+		step two!
+	</div>
+	<!-- 
+    <div class="row">
+        <div class="col-md-6">
+            <a class="lost btn" href="{{window.mvpmUserPasswordreseturl}}">Lost your password?</a>
+        </div>
+        <div class="col-md-6">
+            <a class="lost btn" href="{{window.mvpmUserPasswordreseturl}}">Create Membership</a>
+        </div>
+    </div> -->
+</form>

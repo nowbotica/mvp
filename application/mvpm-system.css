@@ -10388,3 +10388,51 @@ article.card {
     background-color: #c5c3bd;
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
+
+/* ////////////////////////////////////// registration */
+
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+
+  margin: 100px auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% { 
+    background-color:#ddb869;
+    -webkit-transform: perspective(120px) 
+  }
+  50% { 
+    background-color:#4aa68b;
+    -webkit-transform: perspective(120px) rotateY(180deg) 
+  }
+  100% { 
+    background-color:#ddb869;
+    -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) 
+  }
+}
+
+@keyframes sk-rotateplane {
+  0% { 
+    background-color:#ddb869;
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    background-color:#4aa68b;
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    background-color:#ddb869;
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
