@@ -1,13 +1,34 @@
 
-<form id="login" class="mvpm-form" >
+<form id="login" class="mvpm-form" style >
     <!-- <h1>Site Login</h1> -->
     <p class="status">{{dataMessage}}</p>
-    <p><label for="username">Username</label></p>
-    <p><input id="username" type="text" name="username" ng-model="formData.username"></p>
-    <p><label for="password">Password</label></p>
-    <p><input id="password" type="password" name="password" ng-model="formData.password"></p>
-    <input class="submit_button" class="btn btn-primary btn-md" type="submit"  ng-click="formLogin()" name="submit">
-    <hr>
-    <a class="lost btn" href="{{window.mvpmUserPasswordreseturl}}">Lost your password?</a>
-    <a class="lost btn" href="{{window.mvpmUserPasswordreseturl}}">Sign up</a>
+    <div class="row">
+        <div class="col-md-3">
+            <label for="username">Username</label>
+        </div>
+        <div class="col-md-9">
+            <input id="username" type="text" name="username" ng-model="formData.username">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label for="password">Password</label>
+        </div>
+        <div class="col-md-9">
+            <input id="password" type="password" name="password" ng-model="formData.password">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <input class="submit btn" class="btn login" type="submit"  ng-click="formLogin()" name="submit">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <a class="lost btn" href="{{window.mvpmUserPasswordreseturl}}">Lost your password?</a>
+        </div>
+        <div class="col-md-6">
+            <a class="lost btn" href="{{window.mvpmUserPasswordreseturl}}">Create Membership</a>
+        </div>
+    </div>
 </form>

@@ -31,6 +31,10 @@ ProfileCtrl.controller('ProfileCtrl', ['$scope', '$stateParams', 'ProfileFactory
       // $scope.profile = JSON.parse(profile_details['userdata']);    
     });
   }
+
+  $scope.changeView = function(){
+
+  }
 }]);
 
 

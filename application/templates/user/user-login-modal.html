@@ -1,16 +1,15 @@
 <div class="tzu-build">
-	<a href="" class="nav-link action {{actionStatus}}" href="#" ng-click="openModal(reportid)">Login</button>
+	<a href="" class="nav-link action hide-if-loading {{actionStatus}}" href="#" ng-click="openModal(reportid)">Sign in</a>
 
 
 	<div class="tzu-modal-background {{actionStatus}}" ng-show="actionStatus == 'loading'">
 		<section class="tzu-modal {{modalStatus}}">
-		<div class="tzu-modal-content" role="main">
+			<main class="tzu-modal-content" role="main">
 				<user-login></user-login>
-				<hr>			
-				<a href="" class="button small warning" ng-click="closeModal()">close</button>
-			</div>
-			<!-- <footer class="tzu-modal-footer"> -->
-			<!-- </footer> -->
+			</main>
+			<footer class="tzu-modal-footer">
+				<a href="" class="button small warning" ng-click="closeModal()">Close dialogue</a>
+			</footer>
 		</section>
 	</div>
 </div>

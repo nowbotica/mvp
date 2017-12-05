@@ -1,5 +1,18 @@
 * MVP Mechanic
 
+** Product Story 
+
+Remember Someone | 
+| Ask for their address
+Meet Someone | 
+| Ask for their telephone number
+Write to Someone |
+| Send them your address
+
+Choose your own unforgettable name for them
+
+exclude /-/ include
+
 ** Setup
 
 ```

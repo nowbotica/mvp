@@ -23,19 +23,23 @@
                 <login-modal-launcher></login-modal-launcher>
               </li>
               <li class="nav-item" ui-sref-active-eq="active" ng-if="system.loggedin == 'loggedout'">
-                <a class="nav-link" href="" ng-click="showRegister()" ng-controller="UserActionsCtrl">Register</a>            
+                <a class="nav-link" href="" ng-click="showRegister()" ng-controller="UserActionsCtrl">Create Membership</a>            
               </li>
-              <li class="nav-item" ui-sref-active-eq="active" ng-if="system.loggedin == 'loggedin'">
+              <!-- <li class="nav-item" ui-sref-active-eq="active" ng-if="system.loggedin == 'loggedin'">
                 <a class="nav-link" ui-sref="system.listing.all">Listings</a>
-              </li>
-              <li class="nav-item" ui-sref-active-eq="active" ng-if="system.loggedin == 'loggedin'">
+              </li> -->
+              <!-- <li class="nav-item" ui-sref-active-eq="active" ng-if="system.loggedin == 'loggedin'">
                 <a class="nav-link" ui-sref="system.find">Find People</a>
+              </li> -->
+
+              <li class="nav-item" ui-sref-active-eq="active" ng-if="system.loggedin == 'loggedin'">
+                <a class="nav-link" ui-sref="system.profile">You</a>
               </li>
               <li class="nav-item" ui-sref-active-eq="active" ng-if="system.loggedin == 'loggedin'">
-                <a class="nav-link" ui-sref="system.profile">Profile</a>
+                <a class="nav-link" ui-sref="system.addressbook">Your Address Book</a>
               </li>
               <li class="nav-item" ui-sref-active-eq="active" ng-if="system.loggedin == 'loggedin'">
-                <a class="nav-link" href="" ng-click="userLogout()" ng-controller="UserActionsCtrl">Logout</a>
+                <a class="nav-link" href="" ng-click="userLogout()" ng-controller="UserActionsCtrl">Sign Out</a>
               </li>
             </ul>
           </form>
@@ -56,7 +60,7 @@
 
 <div class="wrap-footer"><!-- !00% width background color -->
   <footer class="container">
-    <p>&copy; Company 2017</p>
+    <p>&copy; Industria Nowbotica</p>
   </footer>
 </div>
 
